@@ -18,6 +18,7 @@
 #define KEY_RIGHT 77		// 0 - 224	+ Right.
 #define KEY_DOWN 80		    // 0 - 224	+ Down.
 
+
 //
 #define PAUSE Sleep(2000);
 #define BOARD_SIZE 12;

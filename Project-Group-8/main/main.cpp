@@ -5,6 +5,7 @@
 #include "layout.h"
 #include "playing.h"
 using namespace std;
+
 int main()
 {
 	WhiteConsole();
@@ -12,5 +13,3 @@ int main()
 	playing::play();
 	return 0;
 }
-
-
