@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
 	WhiteConsole();
+	layout::drawBoard();
 	return 0;
 }
 

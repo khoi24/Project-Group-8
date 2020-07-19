@@ -26,3 +26,9 @@ void fixConsole();
 void colorizing(WORD color_code);
 void gotoxy(int column, int row, WORD color_code=COLOR_DEFAULT);
 void WhiteConsole();
+
+class layout
+{
+public:
+	static void drawBoard();
+};
