@@ -1,6 +1,0 @@
-﻿  layout.cpp
-C:\Users\Chloe\Desktop\Project-Group-8\Project-Group-8\main\layout.cpp(10,18): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-  main.cpp
-  Generating Code...
-C:\Users\Chloe\Desktop\Project-Group-8\Project-Group-8\main\layout.cpp(10,25): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-  main.vcxproj -> C:\Users\Chloe\Desktop\Project-Group-8\Project-Group-8\Debug\main.exe
