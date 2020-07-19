@@ -16,6 +16,8 @@
 #define KEY_UP 72			// 0 - 224	+ Up.
 #define KEY_LEFT 75			// 0 - 224	+ Left.
 #define KEY_RIGHT 77		// 0 - 224	+ Right.
+#define KEY_DOWN 80		    // 0 - 224	+ Down.
+
 
 //
 #define PAUSE Sleep(2000);

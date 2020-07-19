@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include "layout.h"
+#include "playing.h"
 using namespace std;
+
 int main()
 {
 	WhiteConsole();
 	layout::drawBoard();
+	playing::play();
 	return 0;
 }
-
-

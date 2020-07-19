@@ -153,9 +153,17 @@
   <ItemGroup>
     <ClCompile Include="layout.cpp" />
     <ClCompile Include="main.cpp" />
+
+    <ClCompile Include="playing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="layout.h" />
+    <ClInclude Include="playing.h" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="layout.h" />
+
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
