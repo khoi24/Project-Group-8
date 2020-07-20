@@ -8,8 +8,7 @@ using namespace std;
 
 int main()
 {
-	WhiteConsole();
-	layout::drawBoard();
-	playing::play();
+	layout caro;
+	caro.run();
 	return 0;
 }

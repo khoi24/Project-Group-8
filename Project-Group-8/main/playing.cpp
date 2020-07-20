@@ -4,20 +4,17 @@
 using namespace std;
 
 // Xét chẵn lẻ
-bool playing::even_odd(long turn)
+bool board::even_odd()
 {
-	if (turn % 2 == 0)
+	if (this->turn % 2 == 0)
 	{
 		return true;
 	}
-	else
-	{
-		return false;
-	}
+	return false;
 }
 
 // Ẩn con trỏ
-void playing::hiddenCursor()
+void board::hiddenCursor()
 {
 	HANDLE hOut;
 	CONSOLE_CURSOR_INFO ConCurInf;
@@ -28,7 +25,7 @@ void playing::hiddenCursor()
 }
 
 //Hiện con trỏ
-void playing::appearCursor()
+void board::appearCursor()
 {
 	HANDLE hOut;
 	CONSOLE_CURSOR_INFO ConCurInf;
@@ -39,7 +36,7 @@ void playing::appearCursor()
 }
 
 // Tạo ma trận trống
-void playing::BlankMatrix()
+void board::BlankMatrix()
 {
 	for (int i = 0; i < 100; i++)
 	{
@@ -51,42 +48,38 @@ void playing::BlankMatrix()
 }
 
 // Xử lý chạm biên
-void playing::Edge(int& x, int& y)
+void board::Edge()
 {
-	if (x > 48) x = 4;
-	if (x < 4) x = 48;
-	if (y < 2) y = 24;
-	if (y > 24) y = 2;
+	if (this->x > 48) this->x = 4;
+	if (this->x < 4) this->x = 48;
+	if (this->y < 2) this->y = 24;
+	if (this->y > 24) this->y = 2;
+
 }
 
 // Check O hoặc X
-char playing::checkOX(long i)
+char board::checkOX()
 {
-	if (playing::even_odd(i) == true)
-	{
+	if (this->even_odd() == true)
 		return 'X';
-	}
-	else
-	{
-		return 'O';
-	}
+	return 'O';
 }
 
 // Vẽ O hoặc X
-void playing::drawOX(long x, long y)
+void board::drawOX()
 {
-	if (a[x][y] != 'X' && a[x][y] != 'O')
+	if (a[this->x][this->y] != 'X' && a[this->x][this->y] != 'O')
 	{
-		a[x][y] = playing::checkOX(turn);
+		a[this->x][this->y] = this->checkOX();
 
-		if (a[x][y] == 'X')
+		if (a[this->x][this->y] == 'X')
 		{
-			cout << a[x][y];
+			cout << a[this->x][this->y];
 		}
 
-		if (a[x][y] == 'O')
+		if (a[this->x][this->y] == 'O')
 		{
-			cout << a[x][y];
+			cout << a[this->x][this->y];
 		}
 
 		turn += 1;
@@ -95,7 +88,7 @@ void playing::drawOX(long x, long y)
 }
 
 // Điều kiện O win
-bool playing::winO()
+bool board::winO()
 {
 	for (int h = 4; h <= 48; h += 4)       // h là hoành độ
 	{
@@ -136,7 +129,7 @@ bool playing::winO()
 }
 
 // Điều kiện X win
-bool playing::winX()
+bool board::winX()
 {
 	for (int h = 4; h <= 48; h += 4)       // h là hoành độ
 	{
@@ -178,10 +171,10 @@ bool playing::winX()
 
 
 // Hàm Playing
-void playing::play()
+void board::play()
 {
-	playing::appearCursor();
-	playing::BlankMatrix();
+	board::appearCursor();
+	board::BlankMatrix();
 	x = 4;    // x ban đầu
 	y = 2;    // y ban đầu  
 	turn = 0; // Lượt chơi
@@ -195,7 +188,7 @@ void playing::play()
 		gotoxy(x, y);
 
 		// W A S D Space: Vẽ X
-		if (turn % 2 == 0)
+		if (this->turn % 2 == 0)
 		{
 			if (_kbhit())
 			{
@@ -204,31 +197,31 @@ void playing::play()
 				if (key == 'D' or key == 'd')
 				{
 					x = x + 4;
-					Edge(x, y);  // Xử lí chạm biên
+					this->Edge();  // Xử lí chạm biên
 				}
 
 				if (key == 'S' or key == 's')
 				{
 					y = y + 2;
-					Edge(x, y);  // Xử lí chạm biên
+					this->Edge();  // Xử lí chạm biên
 				}
 
 				if (key == 'A' or key == 'a')
 				{
 					x = x - 4;
-					Edge(x, y);  // Xử lí chạm biên
+					this->Edge();  // Xử lí chạm biên
 				}
 
 				if (key == 'W' or key == 'w')
 				{
 					y = y - 2;
-					Edge(x, y);  // Xử lí chạm biên
+					this->Edge(); // Xử lí chạm biên
 				}
 
 				if (key == ' ') // Điền X bằng Space
 				{
 					gotoxy(x, y, COLOR_WHITE_BACKGROUND + COLOR_RED);
-					drawOX(x, y);
+					this->drawOX();
 				}
 
 				if (key == KEY_ESC)
@@ -247,31 +240,31 @@ void playing::play()
 				if (key == KEY_RIGHT)
 				{
 					x = x + 4;
-					Edge(x, y);  // Xử lí chạm biên
+					this->Edge();;  // Xử lí chạm biên
 				}
 
 				if (key == KEY_DOWN)
 				{
 					y = y + 2;
-					Edge(x, y);  // Xử lí chạm biên
+					this->Edge();;  // Xử lí chạm biên
 				}
 
 				if (key == KEY_LEFT)
 				{
 					x = x - 4;
-					Edge(x, y);  // Xử lí chạm biên
+					this->Edge();;  // Xử lí chạm biên
 				}
 
 				if (key == KEY_UP)
 				{
 					y = y - 2;
-					Edge(x, y);  // Xử lí chạm biên
+					this->Edge();;  // Xử lí chạm biên
 				}
 
 				if (key == KEY_ENTER) // Điền O bằng Enter
 				{
 					gotoxy(x, y, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
-					drawOX(x, y);
+					this->drawOX();
 				}
 
 				if (key == KEY_ESC)
@@ -286,29 +279,48 @@ void playing::play()
 		{
 			system("cls");
 			hiddenCursor();
-			WhiteConsole();
+			layout::WhiteConsole();
 			_o++;
 			gotoxy(46, 16, COLOR_WHITE_BACKGROUND + COLOR_RED); 
-			cout << "X " << _x;
+			cout << "X: " << _x;
 			gotoxy(61, 16, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
-			cout << _o << " O";
+			cout << "O: "<<_o;
 
 			gotoxy(43, 24, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
-			gotoxy(43, 25, COLOR_WHITE_BACKGROUND); cout << "(Y) Yes";
-			gotoxy(63, 25, COLOR_WHITE_BACKGROUND); cout << "(N) NO";
-
-
-			again = _getch();
-
-			if (again == 'y' or again == 'Y')
+			int choose = 0;
+			while (true)
 			{
-				WhiteConsole();
-				layout::drawBoard();
-				play();
-			}
-			if (again == 'n' or again == 'N')
-			{
-				exit(0);
+				gotoxy(50, 21, choose % 2 == 0 ? 128 : COLOR_WHITE_BACKGROUND); cout << "Yes";
+				gotoxy(63, 21, choose % 2 == 1 ? 128 : COLOR_WHITE_BACKGROUND); cout << "NO";
+
+				unsigned char c = getch();
+				if (c == KEY_ENTER)
+				{
+					if (choose == 0)
+					{
+						layout::WhiteConsole();
+						this->drawBoard();
+						board::play();
+					}
+					if (choose == 1)
+					{
+						exit(0);
+					}
+				}
+				if (c == 224 || c == 0)
+				{
+					c = getch();
+					if (c == KEY_LEFT)
+					{
+						if (choose == 1)
+							choose--;
+					}
+					if (c == KEY_RIGHT)
+					{
+						if (choose == 0)
+							choose++;
+					}
+				}
 			}
 
 			//appearCursor();
@@ -320,32 +332,49 @@ void playing::play()
 
 			system("cls");
 			hiddenCursor();
-			WhiteConsole();
+			layout::WhiteConsole();
 			_x++;
 			gotoxy(46, 16, COLOR_WHITE_BACKGROUND + COLOR_RED);
 			cout << "X " << _x;
 			gotoxy(61, 16, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
-			cout << _o << " O";
+			cout << "O:"<<_o;
 
-			gotoxy(43, 24, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
-			gotoxy(43, 25, COLOR_WHITE_BACKGROUND); cout << "(Y) Yes";
-			gotoxy(63, 25, COLOR_WHITE_BACKGROUND); cout << "(N) NO";
-
-
-			again = _getch();
-
-			if (again == 'y' or again == 'Y')
+			gotoxy(43, 20, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
+			int choose = 0;
+			while (true)
 			{
-				WhiteConsole();
-				layout::drawBoard();
-				play();
-			}
-			if (again == 'n' or again == 'N')
-			{
-				exit(0);
-			}
+				gotoxy(50, 21, choose % 2 == 0 ? 128 : COLOR_WHITE_BACKGROUND); cout << "Yes";
+				gotoxy(63, 21, choose % 2 == 1 ? 128 : COLOR_WHITE_BACKGROUND); cout << "NO";
 
-			//appearCursor();
+				unsigned char c = getch();
+				if (c == KEY_ENTER)
+				{
+					if (choose == 0)
+					{
+						layout::WhiteConsole();
+						board::drawBoard();
+						board::play();
+					}
+					if (choose == 1)
+					{
+						exit(0);
+					}
+				}
+				if (c == 224 || c == 0)
+				{
+					c = getch();
+					if (c == KEY_LEFT)
+					{
+						if(choose==1)
+							choose--;
+					}
+					if (c == KEY_RIGHT)
+					{
+						if(choose==0)
+							choose++;
+					}
+				}
+			}
 		}
 
 		// Hòa
@@ -353,29 +382,157 @@ void playing::play()
 		{
 			system("cls");
 			hiddenCursor();
-			WhiteConsole();
+			layout::WhiteConsole();
 			gotoxy(50, 16, COLOR_WHITE_BACKGROUND);
 			cout << "DRAW";
 
 			gotoxy(43, 24, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
-			gotoxy(43, 25, COLOR_WHITE_BACKGROUND); cout << "(Y) Yes";
-			gotoxy(63, 25, COLOR_WHITE_BACKGROUND); cout << "(N) NO";
-
-
-			again = _getch();
-
-			if (again == 'y' or again == 'Y')
+			int choose=0;
+			while (true)
 			{
-				WhiteConsole();
-				layout::drawBoard();
-				play();
-			}
-			if (again == 'n' or again == 'N')
-			{
-				exit(0);
-			}
+				gotoxy(50, 21, choose % 2 == 0 ? 128 : COLOR_WHITE_BACKGROUND); cout << "Yes";
+				gotoxy(63, 21, choose % 2 == 1 ? 128 : COLOR_WHITE_BACKGROUND); cout << "NO";
 
-			//appearCursor();
+				unsigned char c = getch();
+				if (c == KEY_ENTER)
+				{
+					if (choose == 0)
+					{
+						layout::WhiteConsole();
+						board::drawBoard();
+						board::play();
+					}
+					if (choose == 1)
+					{
+						exit(0);
+					}
+				}
+				if (c == 224 || c == 0)
+				{
+					c = getch();
+					if (c == KEY_LEFT)
+					{
+						if (choose == 1)
+							choose--;
+					}
+					if (c == KEY_RIGHT)
+					{
+						if (choose == 0)
+							choose++;
+					}
+				}
+			}
 		}
 	}
+	
+}
+
+void board::drawBoard()
+{
+	//đường ngang trên
+	int count = 0;
+	for (int i = 2; i <= 50; i++)
+	{
+		if (i == 2)
+		{
+			gotoxy(2, 1, COLOR_WHITE_BACKGROUND); putchar(218);
+		}
+		else if (i == 50)
+		{
+			gotoxy(50, 1, COLOR_WHITE_BACKGROUND); putchar(191);
+		}
+		else
+		{
+			count++;
+			if (count != 4)
+			{
+				gotoxy(i, 1, COLOR_WHITE_BACKGROUND); putchar(196);
+			}
+			else
+			{
+				gotoxy(i, 1, COLOR_WHITE_BACKGROUND); putchar(194);
+				count = 0;
+				continue;
+			}
+		}
+	}
+
+	//cột dọc biên
+	for (int i = 3; i <= 24; i += 2)
+	{
+		for (int j = 2; j <= 50; j += 4)
+		{
+			if (j == 2)
+			{
+				gotoxy(2, i, COLOR_WHITE_BACKGROUND);
+				putchar(195);
+			}
+			else if (j == 50)
+			{
+				gotoxy(50, i, COLOR_WHITE_BACKGROUND);
+				putchar(180);
+			}
+			else
+			{
+				gotoxy(j, i, COLOR_WHITE_BACKGROUND);
+				putchar(197);
+			}
+		}
+	}
+	//cột dọc trong
+	for (int i = 2; i <= 50; i += 4)
+	{
+		for (int j = 2; j <= 24; j += 2)
+		{
+			gotoxy(i, j, 240); putchar(179);
+		}
+	}
+	//ngang dưới
+	count = 0;
+	for (int i = 2; i <= 50; i++)
+	{
+		if (i == 2)
+		{
+			gotoxy(2, 25, COLOR_WHITE_BACKGROUND); putchar(192);
+		}
+		else if (i == 50)
+		{
+			gotoxy(50, 25, COLOR_WHITE_BACKGROUND); putchar(217);
+		}
+		else
+		{
+			count++;
+			if (count != 4)
+			{
+				gotoxy(i, 25, COLOR_WHITE_BACKGROUND); putchar(196);
+			}
+			else
+			{
+				gotoxy(i, 25, COLOR_WHITE_BACKGROUND); putchar(193);
+				count = 0;
+				continue;
+			}
+		}
+	}
+	//ngang trong
+	count = 0;
+	for (int i = 3; i <= 24; i += 2)
+	{
+		for (int j = 3; j <= 50; j++)
+		{
+			count++;
+			if (count != 4)
+			{
+				gotoxy(j, i, 240); putchar(196);
+			}
+			else
+			{
+				count = 0;
+				/*gotoxy(j, i, 240); putchar(197);
+				continue;*/
+			}
+		}
+		count = 0;
+	}
+	gotoxy(27, 27, 240); std::cout << " ";
 }

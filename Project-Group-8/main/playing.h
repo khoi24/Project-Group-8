@@ -2,30 +2,32 @@
 #include <iostream>
 using namespace std;
 
-static long turn;         // Luọt chơi
+static char key;   // Ấn phím
 
-static int x, y;          // Hoành độ, tung độ
-
-static int _o = 0;        // Số lần O thắng
-
-static int _x = 0;        // Số lần X thắng
-
-static char a[100][100];  // Mảng 2 chiều
-
-static char key, again;   // Ấn phím
-
-class playing
+class board
 {
 private:
-	static bool even_odd(long turn);     // Xét chẵn lẻ
+	long turn;         // Luọt chơi
+
+	int x, y;          // Hoành độ, tung độ
+
+	int _o=0;        // Số lần O thắng
+
+	int _x=0;        // Số lần X thắng
+
+	char a[100][100];  // Mảng 2 chiều
+
+
+public:
+	void play();                  // Hàm Playing
+	void drawBoard();
+	bool even_odd();     // Xét chẵn lẻ
+	char checkOX();      // Check O hoặc X
+	void drawOX();  // Vẽ O hoặc X
 	static void hiddenCursor();          // Ẩn con trỏ
 	static void appearCursor();          // Hiện con trỏ
-	static void BlankMatrix();           // Tạo ma trận trống
-	static void Edge(int& x, int& y);    // Xử lý chạm biên
-	static char checkOX(long turn);      // Check O hoặc X
-	static void drawOX(long x, long y);  // Vẽ O hoặc X
-	static bool winX();                  // Điều kiện X win
-	static bool winO();                  // Điều kiện O win
-public:
-	static void play();                  // Hàm Playing
+	bool winX();                  // Điều kiện X win
+	bool winO();                  // Điều kiện O win
+	void BlankMatrix();           // Tạo ma trận trống
+	void Edge();    // Xử lý chạm biên
 };
