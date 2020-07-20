@@ -3,10 +3,14 @@
 #include <Windows.h>
 #pragma warning (disable:4996)
 #include <conio.h>
+#include "playing.h"
 //COLOR CODE
 #define COLOR_DEFAULT 7
 #define COLOR_BLUE 1
 #define COLOR_RED 4
+#define COLOR_WHITE 15
+#define COLOR_BLUE_BACKGROUND 16
+#define COLOR_RED_BACKGROUND 64
 #define COLOR_WHITE_BACKGROUND 240
 
 //KEY CODE
@@ -27,10 +31,12 @@
 void fixConsole();
 void colorizing(WORD color_code);
 void gotoxy(int column, int row, WORD color_code=COLOR_DEFAULT);
-void WhiteConsole();
 
 class layout
 {
+private:
+	board B;
 public:
-	static void drawBoard();
+	void run();
+	static void WhiteConsole();
 };
