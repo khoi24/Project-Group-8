@@ -45,7 +45,7 @@ void hind_roll(BOOL Show)
 void console_set_up(SHORT width, SHORT height){
 
     hind_roll(0);
-    // set size console
+     //set size console
      set_console_size(width, height);
 
     // set size map
@@ -53,6 +53,6 @@ void console_set_up(SHORT width, SHORT height){
 
      const_console_size();
 
-     ignore_mouse();
+    ignore_mouse();
 
 }
