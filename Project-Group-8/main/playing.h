@@ -30,4 +30,5 @@ public:
 	bool winO();                  // Điều kiện O win
 	void BlankMatrix();           // Tạo ma trận trống
 	void Edge();    // Xử lý chạm biên
+	void init();
 };
