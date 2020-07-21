@@ -3,6 +3,14 @@
 #include "playing.h"
 using namespace std;
 
+void board::init()
+{
+	layout::WhiteConsole();
+	layout::drawlayout();
+	board::drawBoard();
+	board::appearCursor();
+	board::BlankMatrix();
+}
 // Xét chẵn lẻ
 bool board::even_odd()
 {
@@ -173,12 +181,12 @@ bool board::winX()
 // Hàm Playing
 void board::play()
 {
-	board::appearCursor();
-	board::BlankMatrix();
+PLAY:
+	this->init();
+
 	x = 4;    // x ban đầu
 	y = 2;    // y ban đầu  
 	turn = 0; // Lượt chơi
-
 	while (1)
 	{
 
@@ -298,9 +306,7 @@ void board::play()
 				{
 					if (choose == 0)
 					{
-						layout::WhiteConsole();
-						this->drawBoard();
-						board::play();
+						goto PLAY;
 					}
 					if (choose == 1)
 					{
@@ -351,9 +357,7 @@ void board::play()
 				{
 					if (choose == 0)
 					{
-						layout::WhiteConsole();
-						board::drawBoard();
-						board::play();
+						goto PLAY;
 					}
 					if (choose == 1)
 					{
@@ -374,7 +378,12 @@ void board::play()
 							choose++;
 					}
 				}
+				if (c == KEY_ESC)
+				{
+					exit(0);
+				}
 			}
+
 		}
 
 		// Hòa
@@ -398,9 +407,7 @@ void board::play()
 				{
 					if (choose == 0)
 					{
-						layout::WhiteConsole();
-						board::drawBoard();
-						board::play();
+						goto PLAY;
 					}
 					if (choose == 1)
 					{
@@ -421,6 +428,8 @@ void board::play()
 							choose++;
 					}
 				}
+				if (c == KEY_ESC)
+					break;
 			}
 		}
 	}
@@ -528,8 +537,6 @@ void board::drawBoard()
 			else
 			{
 				count = 0;
-				/*gotoxy(j, i, 240); putchar(197);
-				continue;*/
 			}
 		}
 		count = 0;
