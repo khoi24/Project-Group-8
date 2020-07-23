@@ -28,6 +28,9 @@ public:
 	static void appearCursor();          // Hiện con trỏ
 	bool winX();                  // Điều kiện X win
 	bool winO();                  // Điều kiện O win
+	void Oiswinner();                // Hiển thị O thắng cuộc
+	void Xiswinner();                // Hiển thị X thắng cuộc
 	void BlankMatrix();           // Tạo ma trận trống
 	void Edge();    // Xử lý chạm biên
+	void init();
 };

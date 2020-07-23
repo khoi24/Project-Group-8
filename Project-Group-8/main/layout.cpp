@@ -36,7 +36,48 @@ void layout::WhiteConsole()
 
 void layout::run()
 {
-	this->WhiteConsole();
-	this->B.drawBoard();
 	this->B.play();
+}
+void layout::drawlayout()
+{
+	//trai tren
+	gotoxy(0, 0, 240); putchar(201);
+	//ngang tren
+	for (int i = 1; i <= 90; i++)
+	{
+		if (i == 55)
+		{
+			gotoxy(i, 0, 240); putchar(203);
+		}
+		else
+			gotoxy(i, 0, 240); putchar(205);
+	}
+	//phai tren
+	gotoxy(91, 0, 240); putchar(187);
+	//cot doc
+	for (int j = 0; j <= 91; j++)
+	{
+		if (j == 0 || j == 91 || j == 55)
+		{
+			for (int i = 1; i <= 25; i++)
+			{
+				gotoxy(j, i, 240); putchar(186);
+			}
+		}
+		else
+			continue;
+	}
+	//trai duoi
+	gotoxy(0, 26, 240); putchar(200);
+	//ngang duoi
+	for (int i = 1; i <= 90; i++)
+	{
+		if (i == 55)
+		{
+			gotoxy(i, 26, 240); putchar(202);
+		}
+		else
+			gotoxy(i, 26, 240); putchar(205);
+	}
+	gotoxy(91, 26, 240); putchar(188);
 }
