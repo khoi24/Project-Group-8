@@ -38,5 +38,6 @@ private:
 	board B;
 public:
 	void run();
+	static void drawlayout();
 	static void WhiteConsole();
 };
