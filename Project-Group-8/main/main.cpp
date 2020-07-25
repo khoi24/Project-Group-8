@@ -11,7 +11,9 @@ int main()
 {
 	//console_set_up(80, 50);
 	
-	
+	// comment
+	int a, b;
+
 	layout caro;
 	caro.run();
 	return 0;
