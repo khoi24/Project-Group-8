@@ -5,6 +5,7 @@
 #include "layout.h"
 #include "playing.h"
 #include "Console_size.h"
+#include "menu.h"
 using namespace std;
 
 int main()
@@ -13,6 +14,8 @@ int main()
 	
 	
 	layout caro;
-	caro.run();
+//	caro.run();
+
+	Menu::run();
 	return 0;
 }
