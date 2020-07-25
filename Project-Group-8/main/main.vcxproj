@@ -154,10 +154,12 @@
     <ClCompile Include="Console_size.cpp" />
     <ClCompile Include="layout.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="playing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console_size.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="layout.h" />
     <ClInclude Include="playing.h" />
   </ItemGroup>

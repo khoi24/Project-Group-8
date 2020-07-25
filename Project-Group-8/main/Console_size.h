@@ -17,3 +17,5 @@ void ignore_mouse();
 void console_set_up(SHORT width, SHORT height);
 
 void hind_roll(BOOL Show);
+
+void Hidden_Mouse();

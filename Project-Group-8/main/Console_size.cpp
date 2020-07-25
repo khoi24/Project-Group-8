@@ -56,3 +56,12 @@ void console_set_up(SHORT width, SHORT height){
      ignore_mouse();
 
 }
+void Hidden_Mouse()
+{
+	HANDLE hOut;
+	CONSOLE_CURSOR_INFO ConCurInf;
+	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	ConCurInf.dwSize = 10;
+	ConCurInf.bVisible = FALSE;
+	SetConsoleCursorInfo(hOut, &ConCurInf);
+}
