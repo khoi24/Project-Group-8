@@ -42,4 +42,5 @@ public:
 	static void WhiteConsole();
 	static void drawGomoku();
 	static void GuidePlay();
+	static void drawLoading();
 };

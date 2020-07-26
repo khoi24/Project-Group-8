@@ -6,6 +6,8 @@ void Menu::run()
 {
 	int choose;
 
+	layout::drawLoading();
+
 	system("cls");
 	Hidden_Mouse();
 
@@ -25,7 +27,7 @@ void Menu::run()
 	// quit game
 	if (choose == 14) {
 		return;
-	}
+	} 
 }
 
 int option()

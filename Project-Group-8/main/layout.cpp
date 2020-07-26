@@ -1,4 +1,6 @@
 ﻿#include "layout.h"
+#include "Console_size.h"
+
 void colorizing(WORD color_code)
 {
 	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -108,4 +110,40 @@ void layout::GuidePlay()
 			}
 		}
 	}
+}
+
+void layout::drawLoading()
+{
+	system("cls");
+	layout::WhiteConsole();
+	Hidden_Mouse();
+
+	gotoxy(0, 0, COLOR_BLACK + COLOR_WHITE_BACKGROUND);
+	
+	// chu loading game
+	gotoxy(33, 9, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "LOADING GAME !!!";
+
+	// ve  loading
+	gotoxy(21, 12, COLOR_BLACK + COLOR_WHITE_BACKGROUND);
+	for (int i = 0; i < 40; i++) {
+		cout << "_" ;
+	}
+	gotoxy(21, 12, COLOR_BLACK );
+	for (int i = 0; i < 20; i++) {
+		cout << " ";
+		Sleep(150);
+	}
+	gotoxy(41, 12, COLOR_BLACK);
+	for (int i = 0; i < 12; i++) {
+		cout << " ";
+		Sleep(210);
+	}
+	gotoxy(53, 12, COLOR_BLACK);
+	for (int i = 0; i < 9; i++) {
+		cout << " ";
+		Sleep(390);
+	}
+	Sleep(1000);
+	
 }
