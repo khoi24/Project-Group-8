@@ -17,6 +17,12 @@ private:
 
 	char a[100][100];  // Mảng 2 chiều
 
+	int pr_x, pr_y; // vi tri ve x hoac o trc do
+
+	bool turn_back = true; //han che so lan quay lai
+
+	
+
 
 public:
 	void play();                  // Hàm Playing
@@ -33,4 +39,6 @@ public:
 	void BlankMatrix();           // Tạo ma trận trống
 	void Edge();    // Xử lý chạm biên
 	void init();
+	
+	
 };
