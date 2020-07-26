@@ -1,4 +1,5 @@
 ﻿#include "layout.h"
+#include "playing.h"
 void colorizing(WORD color_code)
 {
 	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
