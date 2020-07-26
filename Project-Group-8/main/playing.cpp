@@ -415,7 +415,6 @@ PLAY:
 				{
 
 
-
 					gotoxy(x, y, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 					this->drawOX();
 				}
@@ -534,6 +533,7 @@ PLAY:
 			gotoxy(46.5, 10, COLOR_WHITE_BACKGROUND);
 			cout << "DRAW ♥" << endl;
 			cout << "Such a tense match! Let's decide the winner in next game!";
+			
 
 
 
@@ -576,7 +576,7 @@ PLAY:
 			}
 		}
 
-		//turn_back();
+		
 	}
 
 }
