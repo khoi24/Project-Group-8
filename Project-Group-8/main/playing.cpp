@@ -1,9 +1,7 @@
-﻿#include <iostream>
+#include <iostream>
 #include "layout.h"
 #include "playing.h"
 using namespace std;
-
-
 
 
 void board::init()
@@ -538,8 +536,10 @@ PLAY:
 			cout << "Such a tense match! Let's decide the winner in next game!";
 
 
+
 			gotoxy(46.5, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
 			int choose = 0;
+
 			while (true)
 			{
 				gotoxy(50, 27, choose % 2 == 0 ? 128 : COLOR_WHITE_BACKGROUND); cout << "Yes";

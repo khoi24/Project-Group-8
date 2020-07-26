@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <iostream>
 using namespace std;
 
@@ -39,6 +39,5 @@ public:
 	void BlankMatrix();           // Tạo ma trận trống
 	void Edge();    // Xử lý chạm biên
 	void init();
-
 
 };
