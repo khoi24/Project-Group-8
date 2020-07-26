@@ -1,7 +1,8 @@
-﻿#include <iostream>
+#include <iostream>
 #include "layout.h"
 #include "playing.h"
 using namespace std;
+
 
 void board::init()
 {
@@ -93,6 +94,11 @@ void board::drawOX()
 		turn += 1;
 	}
 	colorizing(COLOR_DEFAULT);
+
+	// cap nhat vi tri x hoac o
+	pr_x = x;
+	pr_y = y;
+	turn_back = true;
 }
 
 // Điều kiện O win
@@ -113,7 +119,7 @@ bool board::winO()
 			{
 				return true;
 			}
-			
+
 			// Thắng theo hàng chéo qua phải
 			if ((a[h][t] == 'O') && (a[h + 4][t + 2] == 'O') && (a[h + 8][t + 4] == 'O') && (a[h + 12][t + 6] == 'O') && (a[h + 16][t + 8] == 'O') && ((a[h + 20][t + 10] != 'X') || (a[h - 4][t - 2] != 'X')))
 			{
@@ -306,30 +312,50 @@ PLAY:
 
 				if (key == 'D' or key == 'd')
 				{
+
 					x = x + 4;
 					this->Edge();  // Xử lí chạm biên
 				}
 
 				if (key == 'S' or key == 's')
 				{
+
 					y = y + 2;
 					this->Edge();  // Xử lí chạm biên
 				}
 
 				if (key == 'A' or key == 'a')
 				{
+
 					x = x - 4;
 					this->Edge();  // Xử lí chạm biên
 				}
 
 				if (key == 'W' or key == 'w')
 				{
+
 					y = y - 2;
 					this->Edge(); // Xử lí chạm biên
 				}
+				if (key == 'b' or key == 'B') {
+					if (turn != 0 && turn_back == true) {
 
+						turn_back = false;
+						gotoxy(this->pr_x, this->pr_y, COLOR_WHITE_BACKGROUND);
+						cout << " ";
+						a[pr_x][pr_y] = ' ';
+						turn--;
+						//cout << "turn " << turn << endl;
+						//system("pause");
+						//goto M;
+					}
+
+				}
 				if (key == ' ') // Điền X bằng Space
 				{
+
+
+
 					gotoxy(x, y, COLOR_WHITE_BACKGROUND + COLOR_RED);
 					this->drawOX();
 				}
@@ -370,9 +396,26 @@ PLAY:
 					y = y - 2;
 					this->Edge();;  // Xử lí chạm biên
 				}
+				if (key == 'b' or key == 'B') {
+					if (turn != 0 && turn_back == true) {
+
+						turn_back = false;
+						gotoxy(this->pr_x, this->pr_y, COLOR_WHITE_BACKGROUND);
+						cout << " ";
+						a[pr_x][pr_y] = ' ';
+						turn--;
+						//cout << "turn " << turn << endl;
+						//system("pause");
+						//goto M;
+					}
+
+				}
 
 				if (key == KEY_ENTER) // Điền O bằng Enter
 				{
+
+
+
 					gotoxy(x, y, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 					this->drawOX();
 				}
@@ -465,12 +508,12 @@ PLAY:
 					c = getch();
 					if (c == KEY_LEFT)
 					{
-						if(choose==1)
+						if (choose == 1)
 							choose--;
 					}
 					if (c == KEY_RIGHT)
 					{
-						if(choose==0)
+						if (choose == 0)
 							choose++;
 					}
 				}
@@ -492,8 +535,11 @@ PLAY:
 			cout << "DRAW ♥" << endl;
 			cout << "Such a tense match! Let's decide the winner in next game!";
 
+
+
 			gotoxy(46.5, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
-			int choose=0;
+			int choose = 0;
+
 			while (true)
 			{
 				gotoxy(50, 27, choose % 2 == 0 ? 128 : COLOR_WHITE_BACKGROUND); cout << "Yes";
@@ -529,8 +575,10 @@ PLAY:
 					break;
 			}
 		}
+
+		//turn_back();
 	}
-	
+
 }
 
 void board::drawBoard()
@@ -640,3 +688,5 @@ void board::drawBoard()
 	}
 	gotoxy(27, 27, 240); std::cout << " ";
 }
+
+
