@@ -3,6 +3,33 @@
 #include "playing.h"
 using namespace std;
 
+void board::color_succeede() {
+	
+	char temp = 27;
+	
+		for (int j = 2; j < 6; j++) {
+			for (int i = 0; i < 5; i++) {
+				hiddenCursor();
+				gotoxy(line[i].get_x(), line[i].get_y(), COLOR_WHITE_BACKGROUND + j);
+				cout << temp << "[1m" << "X" << temp << "[0m";
+				
+			}
+			sound_succeeded();
+		}
+		
+	
+}
+void coor::set_x_y(int x, int y) {
+	m_x = x;
+	m_y = y;
+}
+void board::sound_kick() {
+	PlaySound(TEXT("kick.wav"), NULL, SND_SYNC | SND_FILENAME);
+}
+
+void board::sound_succeeded() {
+	PlaySound(TEXT("succeed.wav"), NULL, SND_SYNC | SND_FILENAME);
+}
 
 void board::init()
 {
@@ -79,6 +106,7 @@ void board::drawOX()
 {
 	if (a[this->x][this->y] != 'X' && a[this->x][this->y] != 'O')
 	{
+		sound_kick();
 		a[this->x][this->y] = this->checkOX();
 
 		if (a[this->x][this->y] == 'X')
@@ -111,18 +139,28 @@ bool board::winO()
 			// Thắng theo hàng ngang
 			if ((a[h][t] == 'O') && (a[h + 4][t] == 'O') && (a[h + 8][t] == 'O') && (a[h + 12][t] == 'O') && (a[h + 16][t] == 'O') && ((a[h + 20][t] != 'X') || (a[h - 4][t] != 'X')))
 			{
+				
+				for (int i = 0; i < 5; i++) {
+					line[i].set_x_y(h + i * 4, t);
+				}
 				return true;
 			}
 
 			// Thắng theo hàng dọc
 			if ((a[h][t] == 'O') && (a[h][t + 2] == 'O') && (a[h][t + 4] == 'O') && (a[h][t + 6] == 'O') && (a[h][t + 8] == 'O') && ((a[h][t + 10] != 'X') || (a[h][t - 2] != 'X')))
 			{
+				for (int i = 0; i < 5; i++) {
+					line[i].set_x_y(h, t + i * 2);
+				}
 				return true;
 			}
 
 			// Thắng theo hàng chéo qua phải
 			if ((a[h][t] == 'O') && (a[h + 4][t + 2] == 'O') && (a[h + 8][t + 4] == 'O') && (a[h + 12][t + 6] == 'O') && (a[h + 16][t + 8] == 'O') && ((a[h + 20][t + 10] != 'X') || (a[h - 4][t - 2] != 'X')))
 			{
+				for (int i = 0; i < 5; i++) {
+					line[i].set_x_y(h + i * 4, t + i * 2);
+				}
 				return true;
 			}
 		}
@@ -135,6 +173,9 @@ bool board::winO()
 			// Thắng theo hàng chéo qua trái
 			if ((a[h][t] == 'O') && (a[h - 4][t + 2] == 'O') && (a[h - 8][t + 4] == 'O') && (a[h - 12][t + 6] == 'O') && (a[h - 16][t + 8] == 'O') && ((a[h - 20][t + 10] != 'X') || (a[h + 4][t - 2] != 'X')))
 			{
+				for (int i = 0; i < 5; i++) {
+					line[i].set_x_y(h - i * 4, t + i * 2);
+				}
 				return true;
 			}
 		}
@@ -152,18 +193,27 @@ bool board::winX()
 			// Thắng theo hàng ngang
 			if ((a[h][t] == 'X') && (a[h + 4][t] == 'X') && (a[h + 8][t] == 'X') && (a[h + 12][t] == 'X') && (a[h + 16][t] == 'X') && ((a[h + 20][t] != 'O') || (a[h - 4][t] != 'O')))
 			{
+				for (int i = 0; i < 5; i++) {
+					line[i].set_x_y(h + i * 4, t);
+				}
 				return true;
 			}
 
 			// Thắng theo hàng dọc
 			if ((a[h][t] == 'X') && (a[h][t + 2] == 'X') && (a[h][t + 4] == 'X') && (a[h][t + 6] == 'X') && (a[h][t + 8] == 'X') && ((a[h][t + 10] != 'O') || (a[h][t - 2] != 'O')))
 			{
+				for (int i = 0; i < 5; i++) {
+					line[i].set_x_y(h, t + i * 2);
+				}
 				return true;
 			}
 
 			// Thắng theo hàng chéo qua phải
 			if ((a[h][t] == 'X') && (a[h + 4][t + 2] == 'X') && (a[h + 8][t + 4] == 'X') && (a[h + 12][t + 6] == 'X') && (a[h + 16][t + 8] == 'X') && ((a[h + 20][t + 10] != 'O') || (a[h - 4][t - 2] != 'O')))
 			{
+				for (int i = 0; i < 5; i++) {
+					line[i].set_x_y(h + i * 4, t + i * 2);
+				}
 				return true;
 			}
 		}
@@ -176,6 +226,9 @@ bool board::winX()
 			// Thắng theo hàng chéo qua trái
 			if ((a[h][t] == 'X') && (a[h - 4][t + 2] == 'X') && (a[h - 8][t + 4] == 'X') && (a[h - 12][t + 6] == 'X') && (a[h - 16][t + 8] == 'X') && ((a[h - 20][t + 10] != 'O') || (a[h + 4][t - 2] != 'O')))
 			{
+				for (int i = 0; i < 5; i++) {
+					line[i].set_x_y(h - i * 4, t + i * 2);
+				}
 				return true;
 			}
 		}
@@ -429,6 +482,8 @@ PLAY:
 		// O thắng
 		if (winO() == true)
 		{
+			color_succeede();
+
 			system("cls");
 			hiddenCursor();
 			layout::WhiteConsole();
@@ -476,7 +531,7 @@ PLAY:
 		// X thắng
 		if (winX() == 1)
 		{
-
+			color_succeede();
 			system("cls");
 			hiddenCursor();
 			layout::WhiteConsole();

@@ -1,11 +1,30 @@
 #pragma once
 #include <iostream>
+#pragma comment(lib, "winmm.lib")
+#include <MMsystem.h>
+
 using namespace std;
 
 static char key;   // Ấn phím
 
+class coor {
+private:
+	int m_x, m_y;
+public:
+	void set_x_y(int x, int y);
+	int get_x() {
+		return m_x;
+	}
+	int get_y() {
+		return m_y;
+	}
+	
+
+};
+
 class board
 {
+	friend class coor;
 private:
 	long turn;         // Luọt chơi
 
@@ -20,6 +39,8 @@ private:
 	int pr_x, pr_y; // vi tri ve x hoac o trc do
 
 	bool turn_back = true; //han che so lan quay lai
+
+	coor line[6];
 
 
 
@@ -39,5 +60,7 @@ public:
 	void BlankMatrix();           // Tạo ma trận trống
 	void Edge();    // Xử lý chạm biên
 	void init();
-
+	void sound_kick();
+	void sound_succeeded();
+	void color_succeede();
 };
