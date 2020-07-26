@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
 	console_set_up(80, 50);
+
 	
 	// comment
 	int a, b;
