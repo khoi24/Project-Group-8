@@ -8,6 +8,7 @@
 #define COLOR_DEFAULT 7
 #define COLOR_BLUE 1
 #define COLOR_RED 4
+#define COLOR_BLACK 0
 #define COLOR_WHITE 15
 #define COLOR_BLUE_BACKGROUND 16
 #define COLOR_RED_BACKGROUND 64
@@ -40,4 +41,7 @@ public:
 	void run();
 	static void drawlayout();
 	static void WhiteConsole();
+	static void drawGomoku();
+	static void GuidePlay();
+	static void drawLoading();
 };
