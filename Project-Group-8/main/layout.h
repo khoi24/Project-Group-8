@@ -31,7 +31,7 @@
 //
 void fixConsole();
 void colorizing(WORD color_code);
-void gotoxy(int column, int row, WORD color_code=COLOR_DEFAULT);
+void gotoxy(int column, int row, WORD color_code = COLOR_DEFAULT);
 
 class layout
 {
@@ -39,6 +39,7 @@ private:
 	board B;
 public:
 	void run();
+	static void drawlayout();
 	static void WhiteConsole();
 	static void drawGomoku();
 	static void GuidePlay();
