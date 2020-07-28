@@ -44,19 +44,25 @@ void layout::run()
 
 void layout::drawGomoku()
 {
-	gotoxy(0, 0, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	gotoxy(10, 4, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << "   ********      *******     ****     ****     *******     **   **   **     **" << endl;
+	gotoxy(10, 5, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << "  **      **    **     **    ** **   ** **    **     **    **  **    **     **" << endl;
+	gotoxy(10, 6, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << " **            **       **   **  ** **  **   **       **   ** **     **     **" << endl;
+	gotoxy(10, 7, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << " **            **       **   **    **   **   **       **   ****      **     **" << endl;
+	gotoxy(10, 8, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << " **    *****   **       **   **    *    **   **       **   ** **     **     **" << endl;
+	gotoxy(10, 9, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << "  **      **    **     **    **         **    **     **    **  **    **     **" << endl;
+	gotoxy(10, 10, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << "   ********      *******     **         **     *******     **  **     ******* " << endl;
 	
-	gotoxy(32, 11, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH OTHERS";
-	gotoxy(32, 12, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH COMPUTER";
-	gotoxy(32, 13, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "GUIDE PLAY";
-	gotoxy(32, 14, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "QUIT GAME";
+	gotoxy(45, 15, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH OTHERS";
+	gotoxy(45, 16, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH COMPUTER";
+	gotoxy(45, 17, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "GUIDE PLAY";
+	gotoxy(45, 18, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "QUIT GAME";
 }
 
 void layout::GuidePlay()
@@ -111,40 +117,7 @@ void layout::GuidePlay()
 	}
 }
 
-void layout::drawLoading()
-{
-	system("cls");
-	layout::WhiteConsole();
-	Hidden_Mouse();
 
-	gotoxy(0, 0, COLOR_BLACK + COLOR_WHITE_BACKGROUND);
-
-	// chu loading game
-	gotoxy(33, 9, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << "LOADING GAME !!!";
-
-	// ve  loading
-	gotoxy(21, 12, COLOR_BLACK + COLOR_WHITE_BACKGROUND);
-	for (int i = 0; i < 40; i++) {
-		cout << "_";
-	}
-	gotoxy(21, 12, COLOR_BLACK);
-	for (int i = 0; i < 20; i++) {
-		cout << " ";
-		Sleep(150);
-	}
-	gotoxy(41, 12, COLOR_BLACK);
-	for (int i = 0; i < 12; i++) {
-		cout << " ";
-		Sleep(210);
-	}
-	gotoxy(53, 12, COLOR_BLACK);
-	for (int i = 0; i < 9; i++) {
-		cout << " ";
-		Sleep(390);
-	}
-	Sleep(1000);
-}
 	
 void layout::drawlayout()
 {
