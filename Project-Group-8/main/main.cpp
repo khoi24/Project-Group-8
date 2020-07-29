@@ -12,12 +12,8 @@ int main()
 {
 	console_set_up(80, 50);
 
-	// comment
-	// test
-	//layout caro;
-//	caro.run();
+	Menu game;
+	game.run();
 
-	Menu caro;
-	caro.run();
 	return 0;
 }
