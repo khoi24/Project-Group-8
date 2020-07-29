@@ -11,7 +11,10 @@ void board::color_succeede() {
 			for (int i = 0; i < 5; i++) {
 				hiddenCursor();
 				gotoxy(line[i].get_x(), line[i].get_y(), COLOR_WHITE_BACKGROUND + j);
-				cout << temp << "[1m" << "X" << temp << "[0m";
+				if(a[i][j]=='X')
+					cout << temp << "[1m" << "X" << temp << "[0m";
+				else 
+					cout << temp << "[1m" << "0" << temp << "[0m";
 				
 			}
 			sound_succeeded();
@@ -488,9 +491,9 @@ PLAY:
 			hiddenCursor();
 			layout::WhiteConsole();
 			_o++;
-			board::Oiswinner();
+			Oiswinner();
 
-			gotoxy(46.5, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
+			gotoxy(46, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
 			int choose = 0;
 			while (true)
 			{
@@ -538,7 +541,7 @@ PLAY:
 			_x++;
 			board::Xiswinner();
 
-			gotoxy(46.5, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
+			gotoxy(46, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
 			int choose = 0;
 			while (true)
 			{
@@ -585,14 +588,14 @@ PLAY:
 			system("cls");
 			hiddenCursor();
 			layout::WhiteConsole();
-			gotoxy(46.5, 10, COLOR_WHITE_BACKGROUND);
+			gotoxy(46, 10, COLOR_WHITE_BACKGROUND);
 			cout << "DRAW ♥" << endl;
 			cout << "Such a tense match! Let's decide the winner in next game!";
 			
 
 
 
-			gotoxy(46.5, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
+			gotoxy(46, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
 			int choose = 0;
 
 			while (true)

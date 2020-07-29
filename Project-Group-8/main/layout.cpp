@@ -42,28 +42,6 @@ void layout::run()
 	this->B.play();
 }
 
-void layout::drawGomoku()
-{
-	gotoxy(10, 4, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << "   ********      *******     ****     ****     *******     **   **   **     **" << endl;
-	gotoxy(10, 5, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << "  **      **    **     **    ** **   ** **    **     **    **  **    **     **" << endl;
-	gotoxy(10, 6, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << " **            **       **   **  ** **  **   **       **   ** **     **     **" << endl;
-	gotoxy(10, 7, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << " **            **       **   **    **   **   **       **   ****      **     **" << endl;
-	gotoxy(10, 8, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << " **    *****   **       **   **    *    **   **       **   ** **     **     **" << endl;
-	gotoxy(10, 9, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << "  **      **    **     **    **         **    **     **    **  **    **     **" << endl;
-	gotoxy(10, 10, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << "   ********      *******     **         **     *******     **  **     ******* " << endl;
-	
-	gotoxy(45, 15, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH OTHERS";
-	gotoxy(45, 16, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH COMPUTER";
-	gotoxy(45, 17, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "GUIDE PLAY";
-	gotoxy(45, 18, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "QUIT GAME";
-}
 
 void layout::GuidePlay()
 {
