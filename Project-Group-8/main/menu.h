@@ -5,7 +5,8 @@ int option();
 class Menu
 {
 public:
-	static void run();
+	void run();
+	void drawLoading();
 };
 
 
