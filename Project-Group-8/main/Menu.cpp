@@ -4,16 +4,10 @@
 
 void Menu::drawLoading()
 {
-	system("cls");
-	this->m_layout.WhiteConsole();
 	Hidden_Mouse();
-	//chu loading game
-	gotoxy(40, 15, COLOR_RED + COLOR_WHITE_BACKGROUND);
-	cout << "LOADING GAME !!!";
-	//
 
 	int length = 100;
-	gotoxy(5, 20, COLOR_BLACK);
+	gotoxy(5, 27, COLOR_BLACK);
 	for (int i =5; i <= length; ++i) {
 		putchar(219);
 		if (i == (int)(length * 0.2+15)) Sleep(800);		// == 20%
@@ -151,6 +145,52 @@ void Menu::drawGomoku_run()
 	gotoxy(80, 10, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << "* * * * * *";
 	Sleep(200);
+
+	//K
+	gotoxy(30, 12, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *     * *";
+	gotoxy(30, 13, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *    * *";
+	Sleep(200);
+	gotoxy(30, 14, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *   * *"; Sleep(200);
+	gotoxy(30, 15, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *  * *"; Sleep(200);
+	gotoxy(30, 16, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* * * *"; Sleep(200);
+	gotoxy(30, 17, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* * * *"; Sleep(200);
+	gotoxy(30, 18, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *  * *"; Sleep(200);
+	gotoxy(30, 19, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *   * *"; Sleep(200);
+	gotoxy(30, 20, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *    * *"; Sleep(200);
+	gotoxy(30, 21, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *     * *"; Sleep(200);
+	
+	//U
+	gotoxy(46, 12, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; Sleep(200);
+	gotoxy(46, 13, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; Sleep(200);
+	Sleep(200);
+	gotoxy(46, 14, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; Sleep(200);
+	gotoxy(46, 15, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; Sleep(200);
+	gotoxy(46, 16, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; Sleep(200);
+	gotoxy(46, 17, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; Sleep(200);
+	gotoxy(46, 18, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; Sleep(200);
+	gotoxy(46, 19, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; Sleep(200);
+	gotoxy(46, 20, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* * * * * * * * *"; Sleep(200);
+	gotoxy(47, 21, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* * * * * * * *"; Sleep(200);
 }
 
 void Menu::choosen()
@@ -244,19 +284,60 @@ void Menu::choosen()
 	gotoxy(80, 10, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << "* * * * * *";
 
+	//K
+	gotoxy(30, 12, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *     * *";
+	gotoxy(30, 13, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *    * *";
+	gotoxy(30, 14, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *   * *";
+	gotoxy(30, 15, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *  * *";
+	gotoxy(30, 16, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* * * *";
+	gotoxy(30, 17, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* * * *";
+	gotoxy(30, 18, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *  * *";
+	gotoxy(30, 19, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *   * *";
+	gotoxy(30, 20, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *    * *";
+	gotoxy(30, 21, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *     * *";
+
+	//U
+	gotoxy(46, 12, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *";
+	gotoxy(46, 13, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; 
+	gotoxy(46, 14, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *"; 
+	gotoxy(46, 15, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *";
+	gotoxy(46, 16, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *";
+	gotoxy(46, 17, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *";
+	gotoxy(46, 18, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *";
+	gotoxy(46, 19, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* *           * *";
+	gotoxy(46, 20, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* * * * * * * * *";
+	gotoxy(47, 21, COLOR_RED + COLOR_WHITE_BACKGROUND);
+	cout << "* * * * * * * *"; 
 
 	//Menu
-	gotoxy(45, 15, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH OTHERS";
-	gotoxy(45, 16, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH COMPUTER";
-	gotoxy(45, 17, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "GUIDE PLAY";
-	gotoxy(45, 18, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "QUIT GAME";
+	gotoxy(42, 23, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH OTHERS";
+	gotoxy(42, 24, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "PLAY WITH COMPUTER";
+	gotoxy(42, 25, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "GUIDE PLAY";
+	gotoxy(42, 26, COLOR_BLACK + COLOR_WHITE_BACKGROUND); cout << "QUIT GAME";
 }
 
 void Menu::run()
 {
 	int choose;
-
-	//this->drawLoading();
 
 	system("cls");
 	Hidden_Mouse();
@@ -266,23 +347,25 @@ void Menu::run()
 	this->choosen();
 	choose = option();
 	// play with other
-	if (choose == 15) {
+	if (choose == 23) {
+		this->drawLoading();
 		layout Caro_twoPlayer;
 		Caro_twoPlayer.run();
 	}
 	// play with computer . ps: cho bo sung
-	if (choose == 16) {
+	if (choose == 24) {
+		this->drawLoading();
 		return;
 	}
 	// quit game
-	if (choose == 18) {
+	if (choose == 26) {
 		return;
 	} 
 }
 
 int Menu::option()
 {
-	int x = 44, y = 15;
+	int x = 41, y = 23;
 	unsigned char choose;
 
 	gotoxy(x, y, COLOR_RED + COLOR_WHITE_BACKGROUND); putchar(175);
@@ -294,8 +377,8 @@ int Menu::option()
 			if (choose == 'S' || choose == 's' || choose == 80)
 			{
 				y = y + 1;
-				if (y > 18) {
-					y = 15;
+				if (y > 26) {
+					y = 23;
 				}
 				system("cls");
 				this->choosen();
@@ -305,8 +388,8 @@ int Menu::option()
 			if (choose == 'W' || choose == 'w' || choose == 72)
 			{
 				y = y - 1;
-				if (y < 15) {
-					y = 18;
+				if (y < 23) {
+					y = 26;
 				}
 				system("cls");
 				this->choosen();
@@ -315,7 +398,7 @@ int Menu::option()
 			// enter
 			if (choose ==KEY_ENTER || choose == ' ')
 			{
-				if (y != 17) return y;
+				if (y != 24) return y;
 				// guide play
 				this->m_layout.GuidePlay();
 				system("cls");
