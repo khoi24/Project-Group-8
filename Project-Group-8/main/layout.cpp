@@ -95,8 +95,6 @@ void layout::GuidePlay()
 	}
 }
 
-
-	
 void layout::drawlayout()
 {
 	//trai tren
