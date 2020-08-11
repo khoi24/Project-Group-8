@@ -12,14 +12,8 @@ int main()
 {
 	console_set_up(80, 50);
 
-	
-	// comment
-	int a, b;
-	// test
+	Menu game;
+	game.run();
 
-	layout caro;
-//	caro.run();
-
-	Menu::run();
 	return 0;
 }

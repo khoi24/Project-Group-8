@@ -1,4 +1,6 @@
 #pragma once
+#ifndef PLAYING_
+#define PLAYING_
 #include <iostream>
 #pragma comment(lib, "winmm.lib")
 #include <MMsystem.h>
@@ -21,6 +23,7 @@ public:
 	
 
 };
+
 
 class board
 {
@@ -64,3 +67,4 @@ public:
 	void sound_succeeded();
 	void color_succeede();
 };
+#endif

@@ -1,3 +1,6 @@
+#pragma once
+#ifndef LAYOUT_
+#define LAYOUT_
 #include <iostream>
 #include <string>
 #include <Windows.h>
@@ -41,7 +44,8 @@ public:
 	void run();
 	static void drawlayout();
 	static void WhiteConsole();
-	static void drawGomoku();
-	static void GuidePlay();
-	static void drawLoading();
+
+	void GuidePlay();
+	
 };
+#endif

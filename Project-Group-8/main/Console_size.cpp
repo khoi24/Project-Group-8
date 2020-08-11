@@ -53,7 +53,7 @@ void console_set_up(SHORT width, SHORT height){
 
      const_console_size();
 
-     ignore_mouse();
+    // ignore_mouse();
 
 }
 void Hidden_Mouse()
