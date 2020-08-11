@@ -1,18 +1,16 @@
 #include "Evaluate.h"
-
-
 // ok .. xxxxx
-int FiveInRow(char board[12][11], char xo)
+int FiveInRow(char board[12][11], char xo, Move a, Move b)
 {
 	// hang ngang
 	int dem1, dem2;
-	int x, y, x1, y1;
+	int x, y, x1, y1, test;
 
 	// hang ngang, hang doc
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 11; j++) {
-			// cho hang nhang
-			if (j <= 6) {
+	for (int i = a.row; i <= b.row; i++) {
+		for (int j = a.col; j <= b.col; j++) {
+			// cho hang ngang
+			if (j < 7) {
 				if ((board[i][j] == xo) && (board[i][j + 1] == xo) && (board[i][j + 2] == xo) && (board[i][j + 3] == xo) && (board[i][j + 4] == xo)) return 1;
 			}
 			// cho hang doc
@@ -22,9 +20,12 @@ int FiveInRow(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu trai qua phai
-	for (int i = 0; i < 12; i++) {
+	if ((b.col - a.row) > (b.row - a.col)) test = b.col - a.row; else test = b.row - a.col;
+
+	for (int i = 0; i <= test; i++) {
 		x = i;
 		y = 0;
+
 		while ((x <= 7) && (y <= 6)) {
 			if ((board[x][y] == xo) && (board[x + 1][y + 1] == xo) && (board[x + 2][y + 2] == xo) && (board[x + 3][y + 3] == xo) && (board[x + 4][y + 4] == xo)) return 1;
 			if ((board[y][x] == xo) && (board[y + 1][x + 1] == xo) && (board[y + 2][x + 2] == xo) && (board[y + 3][x + 3] == xo) && (board[y + 4][x + 4] == xo)) return 1;
@@ -32,8 +33,11 @@ int FiveInRow(char board[12][11], char xo)
 			y++;
 		}
 	}
+
 	// duong cheo tu phai qua trai
-	for (int i = 11; i >= 0; i--) {
+	if ((a.col + a.row) < (b.col - b.row)) test = a.col + a.row; else test = b.col - b.row;
+
+	for (int i = 11; i >= test; i--) {
 		x = i;
 		y = 0;
 		x1 = 11;
@@ -52,15 +56,22 @@ int FiveInRow(char board[12][11], char xo)
 }
 
 // ok .. _xxxx_
-int LiveFour(char board[12][11], char xo) {
+int LiveFour(char board[12][11], char xo, Move a, Move b) {
 
 	// hang ngang
 	int dem1 = 0, dem2 = 0;
-	int x, y, x1, y1;
+	int x, y, x1, y1, test;
+	Move n, m;
+
+	if (a.row > 0) n.row = a.row - 1; else n.row = a.row;
+	if (a.col > 0) n.col = a.col - 1; else n.col = a.col;
+
+	if (b.row < 11) m.row = b.row + 1; else m.row = b.row;
+	if (b.col < 10) m.col = b.col + 1; else m.col = b.col;
 
 	// hang ngang va hang doc
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 11; j++) {
+	for (int i = n.row; i < m.row; i++) {
+		for (int j = n.col; j < m.col; j++) {
 			// cho hang nhang
 			if (j <= 5) {
 				if ((board[i][j] == '_') && (board[i][j + 1] == xo) && (board[i][j + 2] == xo) && (board[i][j + 3] == xo) && (board[i][j + 4] == xo) && (board[i][j + 5] == '_')) return 1;
@@ -71,8 +82,11 @@ int LiveFour(char board[12][11], char xo) {
 			}
 		}
 	}
+
 	// duong cheo tu trai qua phai
-	for (int i = 0; i < 12; i++) {
+	if ((b.col - a.row) > (b.row - a.col)) test = b.col - a.row; else test = b.row - a.col;
+
+	for (int i = 0; i < test; i++) {
 		x = i;
 		y = 0;
 		while ((x <= 6) && (y <= 5)) {
@@ -84,8 +98,11 @@ int LiveFour(char board[12][11], char xo) {
 			y++;
 		}
 	}
+
 	// duong cheo tu phai qua trai
-	for (int i = 11; i >= 0; i--) {
+	if ((a.col + a.row) < (b.col - b.row)) test = a.col + a.row; else test = b.col - b.row;
+
+	for (int i = 11; i >= test; i--) {
 		x = i;
 		y = 0;
 		x1 = 11;
@@ -106,18 +123,25 @@ int LiveFour(char board[12][11], char xo) {
 }
 
 // ok .. oxxxx_ xx_xx .. x_xxx .. xxx_x ..
-int DeadFour(char board[12][11], char xo) {
+int DeadFour(char board[12][11], char xo, Move a, Move b) {
 
 	// hang ngang
 	int dem1 = 0, dem2 = 0, count = 0;
-	int x, y, x1, y1;
+	int x, y, x1, y1, test;
 	char ng_ox;
+	Move n, m;
+
+	if (a.row > 0) n.row = a.row - 1; else n.row = a.row;
+	if (a.col > 0) n.col = a.col - 1; else n.col = a.col;
+
+	if (b.row < 11) m.row = b.row + 1; else m.row = b.row;
+	if (b.col < 10) m.col = b.col + 1; else m.col = b.col;
 
 	if (xo == 'x') ng_ox = 'o'; else ng_ox = 'x';
 
 	// hang ngang va hang doc
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 11; j++) {
+	for (int i = n.row; i < m.row; i++) {
+		for (int j = n.col; j < m.col; j++) {
 			// cho hang nhang
 			if (j <= 5) {
 				// oxxxx_
@@ -151,8 +175,10 @@ int DeadFour(char board[12][11], char xo) {
 			}
 		}
 	}
+
 	// duong cheo tu trai qua phai
-	for (int i = 0; i < 12; i++) {
+	if ((b.col - a.row) > (b.row - a.col)) test = b.col - a.row; else test = b.row - a.col;
+	for (int i = 0; i < test; i++) {
 		x = i;
 		y = 0;
 		while ((x <= 6) && (y <= 5)) {
@@ -202,7 +228,8 @@ int DeadFour(char board[12][11], char xo) {
 		}
 	}
 	// duong cheo tu phai qua trai
-	for (int i = 11; i >= 0; i--) {
+	if ((a.col + a.row) < (b.col - b.row)) test = a.col + a.row; else test = b.col - b.row;
+	for (int i = 11; i >= test; i--) {
 		x = i;
 		y = 0;
 		x1 = 11;
@@ -260,15 +287,22 @@ int DeadFour(char board[12][11], char xo) {
 }
 
 // ok .. _xxx_
-int LiveThree(char board[12][11], char xo)
+int LiveThree(char board[12][11], char xo, Move a, Move b)
 {
 	// hang ngang
 	int dem1 = 0, dem2 = 0, count = 0;
-	int x, y, x1, y1;
+	int x, y, x1, y1, test;
+	Move n, m;
+
+	if (a.row > 0) n.row = a.row - 1; else n.row = a.row;
+	if (a.col > 0) n.col = a.col - 1; else n.col = a.col;
+
+	if (b.row < 11) m.row = b.row + 1; else m.row = b.row;
+	if (b.col < 10) m.col = b.col + 1; else m.col = b.col;
 
 	// hang ngang hang doc
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 11; j++) {
+	for (int i = n.row; i < m.row; i++) {
+		for (int j = n.col; j < m.col; j++) {
 			// cho hang nhang
 			if (j <= 6) {
 				//_xxx_
@@ -294,7 +328,8 @@ int LiveThree(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu trai qua phai
-	for (int i = 0; i < 12; i++) {
+	if ((b.col - a.row) > (b.row - a.col)) test = b.col - a.row; else test = b.row - a.col;
+	for (int i = 0; i < test; i++) {
 		x = i;
 		y = 0;
 		while ((x <= 7) && (y <= 6)) {
@@ -330,7 +365,8 @@ int LiveThree(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu phai qua trai
-	for (int i = 11; i >= 0; i--) {
+	if ((a.col + a.row) < (b.col - b.row)) test = a.col + a.row; else test = b.col - b.row;
+	for (int i = 11; i >= test; i--) {
 		x = i;
 		y = 0;
 		x1 = 11;
@@ -376,14 +412,22 @@ int LiveThree(char board[12][11], char xo)
 	return (count - dem1);
 }
 
-int JliveThree(char board[12][11], char xo)
+int JliveThree(char board[12][11], char xo, Move a, Move b)
 {
 	int dem1 = 0, dem2 = 0, count = 0;
-	int x, y, x1, y1;
+	int x, y, x1, y1, test;
+
+	Move n, m;
+
+	if (a.row > 0) n.row = a.row - 1; else n.row = a.row;
+	if (a.col > 0) n.col = a.col - 1; else n.col = a.col;
+
+	if (b.row < 11) m.row = b.row + 1; else m.row = b.row;
+	if (b.col < 10) m.col = b.col + 1; else m.col = b.col;
 
 	// hang ngang hang doc
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 11; j++) {
+	for (int i = n.row; i < m.row; i++) {
+		for (int j = n.col; j < m.col; j++) {
 			// cho hang nhang
 			if (j <= 6) {
 				//xx__x
@@ -407,7 +451,8 @@ int JliveThree(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu trai qua phai
-	for (int i = 0; i < 12; i++) {
+	if ((b.col - a.row) > (b.row - a.col)) test = b.col - a.row; else test = b.row - a.col;
+	for (int i = 0; i < test; i++) {
 		x = i;
 		y = 0;
 		while ((x <= 7) && (y <= 6)) {
@@ -440,7 +485,8 @@ int JliveThree(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu phai qua trai
-	for (int i = 11; i >= 0; i--) {
+	if ((a.col + a.row) < (b.col - b.row)) test = a.col + a.row; else test = b.col - b.row;
+	for (int i = 11; i >= test; i--) {
 		x = i;
 		y = 0;
 		x1 = 11;
@@ -484,18 +530,24 @@ int JliveThree(char board[12][11], char xo)
 	return (count - dem1);
 }
 // ok 
-int DeadThree(char board[12][11], char xo)
+int DeadThree(char board[12][11], char xo, Move a, Move b)
 {
 	// hang ngang
 	int dem1 = 0, dem2 = 0, count = 0;
-	int x, y, x1, y1;
+	int x, y, x1, y1, test;
 	char ng_ox;
+	Move n, m;
 
+	if (a.row > 0) n.row = a.row - 1; else n.row = a.row;
+	if (a.col > 0) n.col = a.col - 1; else n.col = a.col;
+
+	if (b.row < 11) m.row = b.row + 1; else m.row = b.row;
+	if (b.col < 10) m.col = b.col + 1; else m.col = b.col;
 	if (xo == 'x') ng_ox = 'o'; else ng_ox = 'x';
 
 	// hang ngang hang doc
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 11; j++) {
+	for (int i = n.row; i < m.row; i++) {
+		for (int j = n.col; j < m.col; j++) {
 			// cho hang ngang
 			if (j <= 6) {
 				if (j <= 5) {
@@ -550,7 +602,8 @@ int DeadThree(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu trai qua phai
-	for (int i = 0; i < 12; i++) {
+	if ((b.col - a.row) > (b.row - a.col)) test = b.col - a.row; else test = b.row - a.col;
+	for (int i = 0; i < test; i++) {
 		x = i;
 		y = 0;
 		while ((x <= 7) && (y <= 6)) {
@@ -682,7 +735,8 @@ int DeadThree(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu phai qua trai
-	for (int i = 11; i >= 0; i--) {
+	if ((a.col + a.row) < (b.col - b.row)) test = a.col + a.row; else test = b.col - b.row;
+	for (int i = 11; i >= test; i--) {
 		x = i;
 		y = 0;
 		x1 = 11;
@@ -775,13 +829,21 @@ int DeadThree(char board[12][11], char xo)
 	return (count - dem1);
 }
 // ok 
-int LiveTwo(char board[12][11], char xo) {
+int LiveTwo(char board[12][11], char xo, Move a, Move b) {
 	// hang ngang
 	int dem1 = 0, dem2 = 0, count = 0;
-	int x, y, x1, y1;
+	int x, y, x1, y1, test;
 	// hang ngang hang doc
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 11; j++) {
+	Move n, m;
+
+	if (a.row > 0) n.row = a.row - 1; else n.row = a.row;
+	if (a.col > 0) n.col = a.col - 1; else n.col = a.col;
+
+	if (b.row < 11) m.row = b.row + 1; else m.row = b.row;
+	if (b.col < 10) m.col = b.col + 1; else m.col = b.col;
+
+	for (int i = n.row; i < m.row; i++) {
+		for (int j = n.col; j < m.col; j++) {
 			// cho hang nhang
 			if (j <= 7) {
 				//_xx_
@@ -799,7 +861,8 @@ int LiveTwo(char board[12][11], char xo) {
 		}
 	}
 	// duong cheo tu trai qua phai
-	for (int i = 0; i < 12; i++) {
+	if ((b.col - a.row) > (b.row - a.col)) test = b.col - a.row; else test = b.row - a.col;
+	for (int i = 0; i < test; i++) {
 		x = i;
 		y = 0;
 		while ((x <= 8) && (y <= 7)) {
@@ -826,7 +889,8 @@ int LiveTwo(char board[12][11], char xo) {
 		}
 	}
 	// duong cheo tu phai qua trai
-	for (int i = 11; i >= 0; i--) {
+	if ((a.col + a.row) < (b.col - b.row)) test = a.col + a.row; else test = b.col - b.row;
+	for (int i = 11; i >= test; i--) {
 		x = i;
 		y = 0;
 		x1 = 11;
@@ -862,18 +926,25 @@ int LiveTwo(char board[12][11], char xo) {
 	return (count - dem1);
 }
 
-int DeadTwo(char board[12][11], char xo)
+int DeadTwo(char board[12][11], char xo, Move a, Move b)
 {
 	// hang ngang
 	int dem1 = 0, dem2 = 0, count = 0;
-	int x, y, x1, y1;
+	int x, y, x1, y1, test;
 	char ng_ox;
+	Move n, m;
+
+	if (a.row > 0) n.row = a.row - 1; else n.row = a.row;
+	if (a.col > 0) n.col = a.col - 1; else n.col = a.col;
+
+	if (b.row < 11) m.row = b.row + 1; else m.row = b.row;
+	if (b.col < 10) m.col = b.col + 1; else m.col = b.col;
 
 	if (xo == 'x') ng_ox = 'o'; else ng_ox = 'x';
 
 	// hang ngang hang doc
-	for (int i = 0; i < 12; i++) {
-		for (int j = 0; j < 11; j++) {
+	for (int i = n.row; i < m.row; i++) {
+		for (int j = n.col; j < m.col; j++) {
 			// cho hang nhang
 			if (j <= 6) {
 				//oxx__
@@ -911,6 +982,7 @@ int DeadTwo(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu trai qua phai
+	if ((b.col - a.row) > (b.row - a.col)) test = b.col - a.row; else test = b.row - a.col;
 	for (int i = 0; i < 12; i++) {
 		x = i;
 		y = 0;
@@ -970,6 +1042,7 @@ int DeadTwo(char board[12][11], char xo)
 		}
 	}
 	// duong cheo tu phai qua trai
+	if ((a.col + a.row) < (b.col - b.row)) test = a.col + a.row; else test = b.col - b.row;
 	for (int i = 11; i >= 0; i--) {
 		x = i;
 		y = 0;

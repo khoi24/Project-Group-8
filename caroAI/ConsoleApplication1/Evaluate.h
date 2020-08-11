@@ -1,16 +1,14 @@
 #pragma once
-#include <iostream>
+#include "find_x_y.h"
 
-using namespace std;
+int FiveInRow(char board[12][11], char xo, Move a, Move b);
 
-int FiveInRow(char board[12][11], char xo);
+int LiveFour(char board[12][11], char xo, Move a, Move b);
+int DeadFour(char board[12][11], char xo, Move a, Move b);
 
-int LiveFour(char board[12][11], char xo);
-int DeadFour(char board[12][11], char xo);
+int LiveThree(char board[12][11], char xo, Move a, Move b);
+int DeadThree(char board[12][11], char xo, Move a, Move b);
+int JliveThree(char board[12][11], char xo, Move a, Move b);
 
-int LiveThree(char board[12][11], char xo);
-int DeadThree(char board[12][11], char xo);
-int JliveThree(char board[12][11], char xo);
-
-int LiveTwo(char board[12][11], char xo);
-int DeadTwo(char board[12][11], char xo);
+int LiveTwo(char board[12][11], char xo, Move a, Move b);
+int DeadTwo(char board[12][11], char xo, Move a, Move b);

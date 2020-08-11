@@ -118,7 +118,7 @@ void layout::drawLoading()
 	Hidden_Mouse();
 
 	gotoxy(0, 0, COLOR_BLACK + COLOR_WHITE_BACKGROUND);
-	
+
 	// chu loading game
 	gotoxy(33, 9, COLOR_RED + COLOR_WHITE_BACKGROUND);
 	cout << "LOADING GAME !!!";
@@ -126,9 +126,9 @@ void layout::drawLoading()
 	// ve  loading
 	gotoxy(21, 12, COLOR_BLACK + COLOR_WHITE_BACKGROUND);
 	for (int i = 0; i < 40; i++) {
-		cout << "_" ;
+		cout << "_";
 	}
-	gotoxy(21, 12, COLOR_BLACK );
+	gotoxy(21, 12, COLOR_BLACK);
 	for (int i = 0; i < 20; i++) {
 		cout << " ";
 		Sleep(150);
@@ -144,7 +144,7 @@ void layout::drawLoading()
 		Sleep(390);
 	}
 	Sleep(1000);
-	
+}
 void layout::drawlayout()
 {
 	//trai tren

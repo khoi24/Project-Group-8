@@ -78,10 +78,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Evaluate.cpp" />
+    <ClCompile Include="find_x_y.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Evaluate.h" />
+    <ClInclude Include="find_x_y.h" />
     <ClInclude Include="timnuocdi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
