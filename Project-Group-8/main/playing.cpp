@@ -2,7 +2,14 @@
 #include "layout.h"
 #include "playing.h"
 using namespace std;
-
+board::board()
+{
+	turn = 0;
+	x = 4; y = 2;
+	pr_x = -1;
+	pr_y = -1;
+	BlankMatrix();
+}
 void board::color_succeede() {
 	
 	char temp = 27;
@@ -345,12 +352,17 @@ void board::Xiswinner()
 // Hàm Playing
 void board::play()
 {
-PLAY:
-	this->init();
-
+	board temp;
 	x = 4;    // x ban đầu
 	y = 2;    // y ban đầu  
 	turn = 0; // Lượt chơi
+PLAY:
+	this->init();
+	if (turn != 0)
+	{
+		load(temp);
+	}
+LAYOUT:
 	while (1)
 	{
 
@@ -420,6 +432,20 @@ PLAY:
 				{
 					break;
 				}
+				if (key == 112)
+				{
+					temp = save();
+					pause();
+					goto PLAY;
+				}
+				if (key == KEY_SAVE)
+				{
+					temp=save();
+				}
+				if (key==108)
+				{
+					goto PLAY;
+				}
 			}
 		}
 
@@ -478,6 +504,20 @@ PLAY:
 				if (key == KEY_ESC)
 				{
 					break;
+				}
+				if (key==112)
+				{
+					temp=save();
+					pause();
+					goto PLAY;
+				}
+				if (key == KEY_SAVE)
+				{
+					temp=save();
+				}
+				if (key==108)
+				{
+					goto PLAY;
 				}
 			}
 		}
@@ -745,6 +785,136 @@ void board::drawBoard()
 		count = 0;
 	}
 	gotoxy(27, 27, 240); std::cout << " ";
+}
+void board::pause()
+{
+NO_CHANGE:
+	gotoxy(18, 9, 128); cout << "                                                            ";
+	gotoxy(18, 10, 128); cout << "                                                            ";
+	gotoxy(18, 11, 128); cout << "                                                            ";
+	gotoxy(18, 12, 128); cout << "                                                            ";
+	gotoxy(18, 13, 128); cout << "                                                            ";
+	gotoxy(18, 14, 128); cout << "                                                            ";
+	gotoxy(18, 15, 128); cout << "                                                            ";
+	gotoxy(18, 16, 128); cout << "                                                            ";
+	gotoxy(20, 9, 128); cout << "@@@@@@@@";
+	gotoxy(20, 10, 128); cout << "@@     @@";
+	gotoxy(20, 11, 128); cout << "@@     @@";
+	gotoxy(20, 12, 128); cout << "@@     @@";
+	gotoxy(20, 13, 128); cout << "@@@@@@@@";
+	gotoxy(20, 14, 128); cout << "@@";
+	gotoxy(20, 15, 128); cout << "@@";
+	gotoxy(20, 16, 128); cout << "@@";
+
+	gotoxy(34, 9, 128); cout << "@@@@";
+	gotoxy(33, 10, 128); cout << "@@  @@";
+	gotoxy(32, 11, 128); cout << "@@    @@";
+	gotoxy(31, 12, 128); cout << "@@      @@";
+	gotoxy(30, 13, 128); cout << "@@@@@@@@@@@@";
+	gotoxy(29, 14, 128); cout << "@@          @@";
+	gotoxy(28, 15, 128); cout << "@@            @@";
+	gotoxy(27, 16, 128); cout << "@@              @@";
+
+	gotoxy(46, 9, 128); cout << "@@      @@";
+	gotoxy(46, 10, 128); cout << "@@      @@";
+	gotoxy(46, 11, 128); cout << "@@      @@";
+	gotoxy(46, 12, 128); cout << "@@      @@";
+	gotoxy(46, 13, 128); cout << "@@      @@";
+	gotoxy(46, 14, 128); cout << "@@      @@";
+	gotoxy(46, 15, 128); cout << "@@      @@";
+	gotoxy(46, 16, 128); cout << "@@@@@@@@";
+
+	gotoxy(58, 9, 128); cout << "@@@@@@";
+	gotoxy(57, 10, 128); cout << "@@";
+	gotoxy(57, 11, 128); cout << "@@";
+	gotoxy(57, 12, 128); cout << "@@";
+	gotoxy(57, 13, 128); cout << "@@@@@@@";
+	gotoxy(57, 14, 128); cout << "     @@";
+	gotoxy(57, 15, 128); cout << "     @@";
+	gotoxy(57, 16, 128); cout << "@@@@@@@";
+
+	gotoxy(66, 9, 128); cout << "@@@@@@@@";
+	gotoxy(66, 10, 128); cout << "@@";
+	gotoxy(66, 11, 128); cout << "@@";
+	gotoxy(66, 12, 128); cout << "@@";
+	gotoxy(66, 13, 128); cout << "@@@@@@@@";
+	gotoxy(66, 14, 128); cout << "@@";
+	gotoxy(66, 15, 128); cout << "@@";
+	gotoxy(66, 16, 128); cout << "@@@@@@@@";
+	unsigned char c;
+	c = getch();
+	if (KEY_PAUSE(c))
+	{
+		return;
+	}
+	else
+	{
+		goto NO_CHANGE;
+	}
+}
+board &board::load(const board &temp)
+{
+	pr_x = temp.pr_x;
+	pr_y = temp.pr_y;
+	y = temp.y;
+	turn = temp.turn;
+	turn_back = temp.turn_back;
+	x = temp.x;
+	_o = temp._o;
+	_x = temp._x;
+	for (int i = 0; i < 100; i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+			this->a[i][j] = temp.a[i][j];
+		}
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		line[i] = temp.line[i];
+	}
+	for (int i = 4; i < 100; i+=4)
+	{
+		for (int j = 2; j < 25; j += 2)
+		{
+			if (this->a[i][j] == 'X')
+			{
+				gotoxy(i, j,COLOR_RED+COLOR_WHITE_BACKGROUND);
+				cout << this->a[i][j];
+			}
+			else if (this->a[i][j] == 'O')
+			{
+				gotoxy(i, j, COLOR_BLUE + COLOR_WHITE_BACKGROUND);
+				cout << this->a[i][j];
+			}
+		}
+	}
+	return *this;
+}
+
+board board::save()
+{
+	board temp;
+	temp.pr_x = pr_x;
+	temp.pr_y = pr_y;
+	temp.y = y;
+	temp.turn = turn;
+	temp.turn_back = turn_back;
+	temp.x = x;
+	temp._o = _o;
+	temp._x = _x;
+	for (int i = 0; i < 100; i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+			temp.a[i][j] = this->a[i][j];
+		}
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		temp.line[i] = line[i];
+	}
+	return temp;
 }
 
 

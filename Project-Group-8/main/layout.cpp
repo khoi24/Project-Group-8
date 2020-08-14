@@ -119,10 +119,26 @@ void layout::drawlayout()
 			for (int i = 1; i <= 25; i++)
 			{
 				gotoxy(j, i, 240); putchar(186);
+				if (i == 11 && j == 55)
+				{
+					gotoxy(j, i, 240); putchar(204);
+				}
+				if (i == 11 && j == 91)
+				{
+					gotoxy(j, i, 240); putchar(185);
+				}
 			}
 		}
-		else
-			continue;
+		else if (j > 55 && j < 91)
+		{
+			for (int i = 1; i <= 25; i++)
+			{ 
+				if (i == 11)
+				{
+					gotoxy(j, i, 240); putchar(205);
+				}
+			}
+		}
 	}
 	//trai duoi
 	gotoxy(0, 26, 240); putchar(200);
@@ -137,4 +153,13 @@ void layout::drawlayout()
 			gotoxy(i, 26, 240); putchar(205);
 	}
 	gotoxy(91, 26, 240); putchar(188);
+	layout_menu();
+}
+
+void layout::layout_menu()
+{
+	gotoxy(69, 15, 240); cout << "Pause: P";
+	gotoxy(69, 16, 240); cout << "Undo:  B";
+	gotoxy(69, 17, 240); cout << "Save:  Ctrl +S";
+	gotoxy(69, 18, 240); cout << "Load:  L";
 }

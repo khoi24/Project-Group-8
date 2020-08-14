@@ -49,6 +49,7 @@ private:
 
 
 public:
+	board();
 	void play();                  // Hàm Playing
 	void drawBoard();
 	bool even_odd();     // Xét chẵn lẻ
@@ -66,5 +67,9 @@ public:
 	void sound_kick();
 	void sound_succeeded();
 	void color_succeede();
+	void pause();
+	board &load(const board &temp);
+	board save();
+
 };
 #endif

@@ -25,8 +25,9 @@
 #define KEY_LEFT 75			// 0 - 224	+ Left.
 #define KEY_RIGHT 77		// 0 - 224	+ Right.
 #define KEY_DOWN 80		    // 0 - 224	+ Down.
-
-
+#define KEY_PAUSE(c) (c=='P'||c=='p')
+#define KEY_SAVE 19 //Ctrl + S
+#define KEY_LOAD(c) (c=='L'||c=='l')// L
 //
 #define PAUSE Sleep(2000);
 #define BOARD_SIZE 12;
@@ -44,7 +45,7 @@ public:
 	void run();
 	static void drawlayout();
 	static void WhiteConsole();
-
+	static void layout_menu();
 	void GuidePlay();
 	
 };
