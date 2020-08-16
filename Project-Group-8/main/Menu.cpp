@@ -337,30 +337,33 @@ void Menu::choosen()
 
 void Menu::run()
 {
-	int choose;
+	//int choose;
 
-	system("cls");
-	Hidden_Mouse();
+	//system("cls");
+	//Hidden_Mouse();
 
-	this->m_layout.WhiteConsole();
-	this->drawGomoku_run();
-	this->choosen();
-	choose = option();
-	// play with other
-	if (choose == 23) {
-		this->drawLoading();
+	//this->m_layout.WhiteConsole();
+	//this->drawGomoku_run();
+	//this->choosen();
+	//choose = option();
+	//// play with other
+	//if (choose == 23) {
+	//	this->drawLoading();
+	//	layout Caro_twoPlayer;
+	//	Caro_twoPlayer.run();
+	//}
+	//// play with computer . ps: cho bo sung
+	//if (choose == 24) {
+	//	this->drawLoading();
+	//	return;
+	//}
+	//// quit game
+	//if (choose == 26) {
+	//	return;
+	//} 
 		layout Caro_twoPlayer;
 		Caro_twoPlayer.run();
-	}
-	// play with computer . ps: cho bo sung
-	if (choose == 24) {
-		this->drawLoading();
-		return;
-	}
-	// quit game
-	if (choose == 26) {
-		return;
-	} 
+
 }
 
 int Menu::option()
