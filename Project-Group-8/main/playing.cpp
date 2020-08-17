@@ -41,6 +41,10 @@ void board::sound_succeeded() {
 	PlaySound(TEXT("succeed.wav"), NULL, SND_SYNC | SND_FILENAME);
 }
 
+void board::sound_winner() {
+	PlaySound(TEXT("winner.wav"), NULL, SND_SYNC | SND_FILENAME);
+}
+
 void board::init()
 {
 	layout::WhiteConsole();
@@ -251,50 +255,73 @@ void board::Oiswinner()
 {
 	gotoxy(17, 1, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 2, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 3, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "     OOOOOOOOOOOOOOOOOOO                                    OOOOOOOOOOOOOOOOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 4, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "  OOOOOOOOOOOOOOOOOOOOOO                                    OOOOOOOOOOOOOOOOOOOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 5, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << " OOOOO           OOOOOOO       OOOOOOOOOOOOOOOOOOOOOO       OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 6, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << " OOOOO           OOOOOOO       OOOOOOOOOOOOOOOOOOOOOO       OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 7, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << " OOOOO           OOOOOOO     OOOOO                OOOOO     OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 8, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << " OOOOO           OOOOOOO     OOOOO                OOOOO     OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 9, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << " OOOOO           OOOOOOO     OOOOO                OOOOO     OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 10, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << " OOOOO           OOOOOOO     OOOOO                OOOOO     OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 11, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << " OOOOO           OOOOOOO     OOOOO                OOOOO     OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 12, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << " OOOOO           OOOOOOO     OOOOO                OOOOO     OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 13, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "  OOOOO            OOOOOOO   OOOOO                OOOOO   OOOOOOO           OOOOO" << endl;
+	Sleep(50);
 	gotoxy(17, 14, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "     OOOOOOOOOOOOOOOOOOOOOO    OOOOOOOOOOOOOOOOOOOOOO    OOOOOOOOOOOOOOOOOOOOOO " << endl;
+	Sleep(50);
 	gotoxy(17, 15, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "        OOOOOOOOOOOOOOOOOOOO   OOOOOOOOOOOOOOOOOOOOOO   OOOOOOOOOOOOOOOOOOOO " << endl;
+	Sleep(50);
 	gotoxy(17, 16, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                      OOOOOOO                          OOOOOOO " << endl;
+	Sleep(50);
 	gotoxy(17, 17, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                       OOOOOOO                        OOOOOOO " << endl;
+	Sleep(50);
 	gotoxy(17, 18, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                        OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " << endl;
+	Sleep(50);
 	gotoxy(17, 19, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                         OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " << endl;
+	Sleep(50);
 	gotoxy(17, 20, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                                  OOOOOOOOOOOOOOOO        " << endl;
+	Sleep(50);
 	gotoxy(17, 21, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                                 OOOOOOOOOOOOOOOOOO         " << endl;
+	Sleep(50);
 	gotoxy(17, 22, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                                OOOOOOOOOOOOOOOOOOOO         " << endl;
+	Sleep(50);
 	gotoxy(17, 23, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
 	cout << "                               OOOOOOOOOOOOOOOOOOOOOO         " << endl;
+	sound_winner();
 }
 
 
@@ -303,50 +330,73 @@ void board::Xiswinner()
 {
 	gotoxy(17, 1, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 2, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 3, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "     XXXXXXXXXXXXXXXXXXX                                    XXXXXXXXXXXXXXXXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 4, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "  XXXXXXXXXXXXXXXXXXXXXX                                    XXXXXXXXXXXXXXXXXXXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 5, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << " XXXXX           XXXXXXX       XXXXX            XXXXX       XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 6, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << " XXXXX           XXXXXXX       XXXXX            XXXXX       XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 7, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << " XXXXX           XXXXXXX         XXXXX        XXXXX         XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 8, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << " XXXXX           XXXXXXX          XXXXX      XXXXX          XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 9, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << " XXXXX           XXXXXXX           XXXXX    XXXXX           XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 10, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << " XXXXX           XXXXXXX              XXXXXXX               XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 11, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << " XXXXX           XXXXXXX           XXXXX    XXXXX           XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 12, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << " XXXXX           XXXXXXX          XXXXX      XXXXX          XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 13, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "  XXXXX            XXXXXXX       XXXXX        XXXXX       XXXXXXX           XXXXX" << endl;
+	Sleep(50);
 	gotoxy(17, 14, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "     XXXXXXXXXXXXXXXXXXXXXX    XXXXX            XXXXX    XXXXXXXXXXXXXXXXXXXXXX " << endl;
+	Sleep(50);
 	gotoxy(17, 15, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "        XXXXXXXXXXXXXXXXXXXX   XXXXX            XXXXX   XXXXXXXXXXXXXXXXXXXX " << endl;
+	Sleep(50);
 	gotoxy(17, 16, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                      XXXXXXX                          XXXXXXX " << endl;
+	Sleep(50);
 	gotoxy(17, 17, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                       XXXXXXX                        XXXXXXX " << endl;
+	Sleep(50);
 	gotoxy(17, 18, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX " << endl;
+	Sleep(50);
 	gotoxy(17, 19, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX " << endl;
+	Sleep(50);
 	gotoxy(17, 20, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                                  XXXXXXXXXXXXXXXX        " << endl;
+	Sleep(50);
 	gotoxy(17, 21, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                                 XXXXXXXXXXXXXXXXXX         " << endl;
+	Sleep(50);
 	gotoxy(17, 22, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                                XXXXXXXXXXXXXXXXXXXX         " << endl;
+	Sleep(50);
 	gotoxy(17, 23, COLOR_WHITE_BACKGROUND + COLOR_RED);
 	cout << "                               XXXXXXXXXXXXXXXXXXXXXX         " << endl;
+	sound_winner();
 }
 
 // Hàm Playing
