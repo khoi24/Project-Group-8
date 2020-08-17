@@ -66,6 +66,7 @@ public:
 	void init();
 	void sound_kick();
 	void sound_succeeded();
+	void sound_winner();
 	void color_succeede();
 	void pause();
 	board &load(const board &temp);
