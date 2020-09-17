@@ -729,6 +729,285 @@ LAYOUT:
 
 }
 
+void board::playWithComputer()
+{
+	char BoardGame[12][11];
+	board temp;
+
+	// tao mang 2 chieu board game rong
+	FindTheWay::EmptyBoard(BoardGame);
+
+	x = 4;    // x ban đầu
+	y = 2;    // y ban đầu  
+	turn = 0; // Lượt chơi
+PLAY:
+	this->init();
+	if (turn != 0)
+	{
+		// khoi tao lai mang boardgame
+		FindTheWay::EmptyBoard(BoardGame);
+
+		load(temp);
+	}
+LAYOUT:
+	while (1)
+	{
+		// Điều khiển
+
+		// Điểm ban đầu
+		gotoxy(x, y);
+
+		// W A S D Space: Vẽ X
+		if (this->turn % 2 == 0)
+		{
+			if (_kbhit())
+			{
+				key = _getch();
+
+				if (key == 'D' or key == 'd')
+				{
+
+					x = x + 4;
+					this->Edge();  // Xử lí chạm biên
+				}
+
+				if (key == 'S' or key == 's')
+				{
+
+					y = y + 2;
+					this->Edge();  // Xử lí chạm biên
+				}
+
+				if (key == 'A' or key == 'a')
+				{
+
+					x = x - 4;
+					this->Edge();  // Xử lí chạm biên
+				}
+
+				if (key == 'W' or key == 'w')
+				{
+					y = y - 2;
+					this->Edge(); // Xử lí chạm biên
+				}
+				if (key == 'b' or key == 'B') {
+					if (turn != 0 && turn_back == true) {
+
+						turn_back = false;
+						gotoxy(this->pr_x, this->pr_y, COLOR_WHITE_BACKGROUND);
+						cout << " ";
+						a[pr_x][pr_y] = ' ';
+						turn--;
+
+					}
+
+				}
+				if (key == ' ') // Điền X bằng Space
+				{
+					gotoxy(x, y, COLOR_WHITE_BACKGROUND + COLOR_RED);
+					this->drawOX();
+
+					BoardGame[y / 2 - 1][x / 4 - 1] = 'o';
+				}
+
+				if (key == KEY_ESC)
+				{
+					break;
+				}
+				if (key == 112)
+				{
+					temp = save();
+					pause();
+					goto PLAY;
+				}
+				if (key == KEY_SAVE)
+				{
+					temp = save();
+				}
+				if (key == 108)
+				{
+					goto PLAY;
+				}
+			}
+		}
+
+		// Up Down Left Right Enter: Vẽ O
+		else
+		{
+			FindTheWay Way;
+			// tim duong di tot nhat
+			Move bestMove = Way.findBestMove(BoardGame);
+
+			// dien board
+			BoardGame[bestMove.row][bestMove.col] = 'x';
+
+			x = 4 * bestMove.col + 4;
+			y = 2 * bestMove.row + 2;
+
+			gotoxy(x, y, COLOR_WHITE_BACKGROUND + COLOR_BLUE);
+			this->drawOX();
+		}
+
+		// O thắng
+		if (winO() == true)
+		{
+			// khoi tao lai mang boardgame
+			FindTheWay::EmptyBoard(BoardGame);
+
+			color_succeede();
+
+			system("cls");
+			hiddenCursor();
+			layout::WhiteConsole();
+			_o++;
+			Oiswinner();
+
+			gotoxy(46, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
+			int choose = 0;
+			while (true)
+			{
+				gotoxy(50, 27, choose % 2 == 0 ? 128 : COLOR_WHITE_BACKGROUND); cout << "Yes";
+				gotoxy(63, 27, choose % 2 == 1 ? 128 : COLOR_WHITE_BACKGROUND); cout << "NO";
+
+				unsigned char c = getch();
+				if (c == KEY_ENTER)
+				{
+					if (choose == 0)
+					{
+						goto PLAY;
+					}
+					if (choose == 1)
+					{
+						exit(0);
+					}
+				}
+				if (c == 224 || c == 0)
+				{
+					c = getch();
+					if (c == KEY_LEFT)
+					{
+						if (choose == 1)
+							choose--;
+					}
+					if (c == KEY_RIGHT)
+					{
+						if (choose == 0)
+							choose++;
+					}
+				}
+			}
+
+			//appearCursor();
+		}
+
+		// X thắng
+		if (winX() == 1)
+		{
+			// khoi tao lai mang boardgame
+			FindTheWay::EmptyBoard(BoardGame);
+
+			color_succeede();
+			system("cls");
+			hiddenCursor();
+			layout::WhiteConsole();
+			_x++;
+			board::Xiswinner();
+
+			gotoxy(46, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
+			int choose = 0;
+			while (true)
+			{
+				gotoxy(50, 27, choose % 2 == 0 ? 128 : COLOR_WHITE_BACKGROUND); cout << "Yes";
+				gotoxy(63, 27, choose % 2 == 1 ? 128 : COLOR_WHITE_BACKGROUND); cout << "NO";
+
+				unsigned char c = getch();
+				if (c == KEY_ENTER)
+				{
+					if (choose == 0)
+					{
+						goto PLAY;
+					}
+					if (choose == 1)
+					{
+						exit(0);
+					}
+				}
+				if (c == 224 || c == 0)
+				{
+					c = getch();
+					if (c == KEY_LEFT)
+					{
+						if (choose == 1)
+							choose--;
+					}
+					if (c == KEY_RIGHT)
+					{
+						if (choose == 0)
+							choose++;
+					}
+				}
+				if (c == KEY_ESC)
+				{
+					exit(0);
+				}
+			}
+
+		}
+
+		// Hòa
+		if (turn == 144)
+		{
+			// khoi tao lai mang boardgame
+			FindTheWay::EmptyBoard(BoardGame);
+
+			system("cls");
+			hiddenCursor();
+			layout::WhiteConsole();
+			gotoxy(46, 10, COLOR_WHITE_BACKGROUND);
+			cout << "DRAW ♥" << endl;
+			cout << "Such a tense match! Let's decide the winner in next game!";
+
+			gotoxy(46, 25, COLOR_WHITE_BACKGROUND); cout << "Do you want to play again?"; //Ask to play again
+			int choose = 0;
+
+			while (true)
+			{
+				gotoxy(50, 27, choose % 2 == 0 ? 128 : COLOR_WHITE_BACKGROUND); cout << "Yes";
+				gotoxy(63, 27, choose % 2 == 1 ? 128 : COLOR_WHITE_BACKGROUND); cout << "NO";
+
+				unsigned char c = getch();
+				if (c == KEY_ENTER)
+				{
+					if (choose == 0)
+					{
+						goto PLAY;
+					}
+					if (choose == 1)
+					{
+						exit(0);
+					}
+				}
+				if (c == 224 || c == 0)
+				{
+					c = getch();
+					if (c == KEY_LEFT)
+					{
+						if (choose == 1)
+							choose--;
+					}
+					if (c == KEY_RIGHT)
+					{
+						if (choose == 0)
+							choose++;
+					}
+				}
+				if (c == KEY_ESC)
+					break;
+			}
+		}
+	}
+}
+
 void board::drawBoard()
 {
 	//đường ngang trên
@@ -904,6 +1183,7 @@ NO_CHANGE:
 }
 board &board::load(const board &temp)
 {
+
 	pr_x = temp.pr_x;
 	pr_y = temp.pr_y;
 	y = temp.y;

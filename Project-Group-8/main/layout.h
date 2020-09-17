@@ -43,6 +43,7 @@ private:
 	board B;
 public:
 	void run();
+	void runAI();
 	static void drawlayout();
 	static void WhiteConsole();
 	static void layout_menu();

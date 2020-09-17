@@ -337,32 +337,44 @@ void Menu::choosen()
 
 void Menu::run()
 {
-	//int choose;
+	int choose;
 
-	//system("cls");
-	//Hidden_Mouse();
+	system("cls");
+	Hidden_Mouse();
 
-	//this->m_layout.WhiteConsole();
-	//this->drawGomoku_run();
-	//this->choosen();
-	//choose = option();
-	//// play with other
-	//if (choose == 23) {
-	//	this->drawLoading();
-	//	layout Caro_twoPlayer;
-	//	Caro_twoPlayer.run();
-	//}
-	//// play with computer . ps: cho bo sung
-	//if (choose == 24) {
-	//	this->drawLoading();
-	//	return;
-	//}
-	//// quit game
-	//if (choose == 26) {
-	//	return;
-	//} 
+/*	// hien thi loading
+	this->m_layout.WhiteConsole();
+	this->drawLoading();
+
+	// hien thi menu
+	system("cls");
+	Hidden_Mouse();
+
+	
+	this->drawGomoku_run();  */
+
+	this->m_layout.WhiteConsole();
+
+	this->choosen();
+
+	choose = option();
+
+	// play with other
+	if (choose == 23) {
+
 		layout Caro_twoPlayer;
 		Caro_twoPlayer.run();
+	}
+	// play with computer ** ps: cho bo sung
+	if (choose == 24) {
+
+		layout Caro_PlayWithAI;
+		Caro_PlayWithAI.runAI();
+	}
+	// quit game
+	if (choose == 26) {
+		return;
+	}
 
 }
 
@@ -401,7 +413,7 @@ int Menu::option()
 			// enter
 			if (choose ==KEY_ENTER || choose == ' ')
 			{
-				if (y != 24) return y;
+				if (y != 25) return y;
 				// guide play
 				this->m_layout.GuidePlay();
 				system("cls");

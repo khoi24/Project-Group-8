@@ -4,6 +4,7 @@
 #include <iostream>
 #pragma comment(lib, "winmm.lib")
 #include <MMsystem.h>
+#include "FindTheWay.h"
 
 using namespace std;
 
@@ -51,6 +52,7 @@ private:
 public:
 	board();
 	void play();                  // Hàm Playing
+	void playWithComputer();    // ham choi voi may
 	void drawBoard();
 	bool even_odd();     // Xét chẵn lẻ
 	char checkOX();      // Check O hoặc X

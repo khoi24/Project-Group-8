@@ -40,6 +40,12 @@ void layout::WhiteConsole()
 void layout::run()
 {
 	this->B.play();
+}  
+
+// chay computer
+void layout::runAI()
+{
+	this->B.playWithComputer();
 }
 
 

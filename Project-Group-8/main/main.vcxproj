@@ -152,6 +152,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Console_size.cpp" />
+    <ClCompile Include="Evaluate_Board.cpp" />
+    <ClCompile Include="FindTheWay.cpp" />
     <ClCompile Include="layout.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
@@ -159,9 +161,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console_size.h" />
+    <ClInclude Include="Evaluate_Board.h" />
+    <ClInclude Include="FindTheWay.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="layout.h" />
     <ClInclude Include="playing.h" />
+    <ClInclude Include="Struct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
