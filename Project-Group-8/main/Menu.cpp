@@ -341,19 +341,9 @@ void Menu::run()
 
 	system("cls");
 	Hidden_Mouse();
-
-/*	// hien thi loading
 	this->m_layout.WhiteConsole();
-	this->drawLoading();
-
-	// hien thi menu
-	system("cls");
-	Hidden_Mouse();
-
-	
-	this->drawGomoku_run();  */
-
-	this->m_layout.WhiteConsole();
+	// hien thi loading
+	this->drawGomoku_run();  
 
 	this->choosen();
 
@@ -361,13 +351,13 @@ void Menu::run()
 
 	// play with other
 	if (choose == 23) {
-
+		this->drawLoading();
 		layout Caro_twoPlayer;
 		Caro_twoPlayer.run();
 	}
 	// play with computer ** ps: cho bo sung
 	if (choose == 24) {
-
+		this->drawLoading();
 		layout Caro_PlayWithAI;
 		Caro_PlayWithAI.runAI();
 	}
