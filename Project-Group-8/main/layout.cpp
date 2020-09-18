@@ -164,8 +164,29 @@ void layout::drawlayout()
 
 void layout::layout_menu()
 {
-	gotoxy(69, 15, 240); cout << "Pause: P";
-	gotoxy(69, 16, 240); cout << "Undo:  B";
-	gotoxy(69, 17, 240); cout << "Save:  Ctrl +S";
-	gotoxy(69, 18, 240); cout << "Load:  L";
+	gotoxy(67, 15, 240); cout << "Pause: P";
+	gotoxy(67, 16, 240); cout << "Undo:  B";
+	gotoxy(67, 17, 240); cout << "Save:  Ctrl +S";
+	gotoxy(67, 18, 240); cout << "Load:  L";
+	//X
+	gotoxy(60, 2, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "* *     * *";
+	gotoxy(61, 3, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "* *   * *";
+	gotoxy(62, 4, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "* * * *";
+	gotoxy(63, 5, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "* * *";
+	gotoxy(62, 6, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "  * *";
+	gotoxy(63, 7, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "* * *";
+	gotoxy(62, 8, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "* * * *";
+	gotoxy(61, 9, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "* *   * *";
+	gotoxy(60, 10, COLOR_BLUE + COLOR_WHITE_BACKGROUND); cout << "* *     * *";
+	
+	//O
+	gotoxy(74, 2, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* * * * * *";
+	gotoxy(72, 3, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* * * * * * * *";
+	gotoxy(72, 4, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* *         * *";
+	gotoxy(72, 5, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* *         * *";
+	gotoxy(72, 6, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* *         * *";
+	gotoxy(72, 7, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* *         * *";
+	gotoxy(72, 8, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* *         * *";
+	gotoxy(72, 9, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* * * * * * * *";
+	gotoxy(74, 10, COLOR_RED + COLOR_WHITE_BACKGROUND); cout << "* * * * * *";
 }

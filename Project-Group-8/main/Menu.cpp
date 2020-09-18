@@ -338,13 +338,11 @@ void Menu::choosen()
 void Menu::run()
 {
 	int choose;
-
 	system("cls");
 	Hidden_Mouse();
 	this->m_layout.WhiteConsole();
 	// hien thi loading
 	this->drawGomoku_run();  
-
 	this->choosen();
 
 	choose = option();
