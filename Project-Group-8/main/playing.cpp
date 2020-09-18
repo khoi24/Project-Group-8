@@ -18,10 +18,10 @@ void board::color_succeede() {
 			for (int i = 0; i < 5; i++) {
 				hiddenCursor();
 				gotoxy(line[i].get_x(), line[i].get_y(), COLOR_WHITE_BACKGROUND + j);
-				if(a[i][j]=='X')
+				if(a[line[i].get_x()][line[i].get_y()]=='X')
 					cout << temp << "[1m" << "X" << temp << "[0m";
-				else 
-					cout << temp << "[1m" << "0" << temp << "[0m";
+				else if(a[line[i].get_x()][line[i].get_y()]=='O')
+					cout << temp << "[1m" << "O" << temp << "[0m";
 				
 			}
 			sound_succeeded();
