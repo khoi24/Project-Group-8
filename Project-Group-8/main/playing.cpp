@@ -800,11 +800,15 @@ LAYOUT:
 						gotoxy(this->pr_x, this->pr_y, COLOR_WHITE_BACKGROUND);
 						cout << " ";
 						a[pr_x][pr_y] = ' ';
+						BoardGame[this->pr_y / 2 - 1][this->pr_x / 4 - 1] = '_';
 						turn--;
+
 						gotoxy(this->pr_x_ai, this->pr_y_ai, COLOR_WHITE_BACKGROUND);
 						cout << " ";
 						a[pr_x_ai][pr_y_ai] = ' ';
+						BoardGame[this->pr_y_ai / 2 - 1][this->pr_x_ai / 4 - 1] = '_';
 						turn--;
+
 					}
 				turn_back = false;
 
