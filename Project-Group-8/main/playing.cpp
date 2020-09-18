@@ -8,6 +8,8 @@ board::board()
 	x = 4; y = 2;
 	pr_x = -1;
 	pr_y = -1;
+	pr_x_ai = -1;
+	pr_y_ai = -1;
 	BlankMatrix();
 }
 void board::color_succeede() {
@@ -118,6 +120,8 @@ char board::checkOX()
 // Vẽ O hoặc X
 void board::drawOX()
 {
+	pr_x_ai=this->pr_x;
+	pr_y_ai = this->pr_y;
 	if (a[this->x][this->y] != 'X' && a[this->x][this->y] != 'O')
 	{
 		sound_kick();
@@ -463,6 +467,7 @@ LAYOUT:
 						cout << " ";
 						a[pr_x][pr_y] = ' ';
 						turn--;
+						
 						//cout << "turn " << turn << endl;
 						//system("pause");
 						//goto M;
@@ -540,7 +545,7 @@ LAYOUT:
 						//system("pause");
 						//goto M;
 					}
-
+					
 				}
 
 				if (key == KEY_ENTER) // Điền O bằng Enter
@@ -790,16 +795,18 @@ LAYOUT:
 					y = y - 2;
 					this->Edge(); // Xử lí chạm biên
 				}
-				if (key == 'b' or key == 'B') {
+				if (key == 'b' or key == 'B') {	
 					if (turn != 0 && turn_back == true) {
-
-						turn_back = false;
 						gotoxy(this->pr_x, this->pr_y, COLOR_WHITE_BACKGROUND);
 						cout << " ";
 						a[pr_x][pr_y] = ' ';
 						turn--;
-
+						gotoxy(this->pr_x_ai, this->pr_y_ai, COLOR_WHITE_BACKGROUND);
+						cout << " ";
+						a[pr_x_ai][pr_y_ai] = ' ';
+						turn--;
 					}
+				turn_back = false;
 
 				}
 				if (key == ' ') // Điền X bằng Space

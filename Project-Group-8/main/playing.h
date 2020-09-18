@@ -41,7 +41,7 @@ private:
 	char a[100][100];  // Mảng 2 chiều
 
 	int pr_x, pr_y; // vi tri ve x hoac o trc do
-
+	int pr_x_ai, pr_y_ai;//trong ai day la nuoc di cua nguoi choi
 	bool turn_back = true; //han che so lan quay lai
 
 	coor line[6];
@@ -50,6 +50,7 @@ private:
 
 
 public:
+
 	board();
 	void play();                  // Hàm Playing
 	void playWithComputer();    // ham choi voi may
