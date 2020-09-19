@@ -13,9 +13,9 @@
 
  | **ID** | **Name** |
  | --- | --- |
- | 19127593 | **[Lê Tiến Trí](https://www.facebook.com/le.tri.7568596)** |
+ | 19127186 | **[Lê Thành Khôi](https://www.facebook.com/tkoii.810)** |
+ | 19127593 | [Lê Tiến Trí](https://www.facebook.com/le.tri.7568596)|
  | 19127439 | [Nguyễn Lê Quốc	Khánh](https://www.facebook.com/khanh.quoc.7330) |
- | 19127186 | [Lê Thành	Khôi](https://www.facebook.com/tkoii.810) |
  | 19127452 | [Nguyễn Đăng Khôi](https://www.facebook.com/profile.php?id=100010483894449) |
  
  **Discussion**
