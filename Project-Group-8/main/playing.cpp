@@ -406,7 +406,7 @@ void board::Xiswinner()
 // Hàm Playing
 void board::play()
 {
-	board temp;
+	board temp,temp_save;
 	x = 4;    // x ban đầu
 	y = 2;    // y ban đầu  
 	turn = 0; // Lượt chơi
@@ -416,6 +416,7 @@ PLAY:
 	{
 		load(temp);
 	}
+
 LAYOUT:
 	while (1)
 	{
@@ -484,7 +485,7 @@ LAYOUT:
 
 				if (key == KEY_ESC)
 				{
-					break;
+					return;
 				}
 				if (key == 112)
 				{
@@ -494,11 +495,11 @@ LAYOUT:
 				}
 				if (key == KEY_SAVE)
 				{
-					temp=save();
+					temp_save=save();
 				}
 				if (key==108)
 				{
-					goto PLAY;
+					goto LOAD;
 				}
 			}
 		}
@@ -557,7 +558,7 @@ LAYOUT:
 
 				if (key == KEY_ESC)
 				{
-					break;
+					return;
 				}
 				if (key==112)
 				{
@@ -567,11 +568,11 @@ LAYOUT:
 				}
 				if (key == KEY_SAVE)
 				{
-					temp=save();
+					temp_save=save();
 				}
 				if (key==108)
 				{
-					goto PLAY;
+					goto LOAD;
 				}
 			}
 		}
@@ -599,7 +600,7 @@ LAYOUT:
 				{
 					if (choose == 0)
 					{
-						goto PLAY;
+						goto PLAY_AGAIN;
 					}
 					if (choose == 1)
 					{
@@ -647,7 +648,7 @@ LAYOUT:
 				{
 					if (choose == 0)
 					{
-						goto PLAY;
+						goto PLAY_AGAIN;
 					}
 					if (choose == 1)
 					{
@@ -702,7 +703,7 @@ LAYOUT:
 				{
 					if (choose == 0)
 					{
-						goto PLAY;
+						goto PLAY_AGAIN;
 					}
 					if (choose == 1)
 					{
@@ -728,16 +729,29 @@ LAYOUT:
 
 			}
 		}
-
 		
 	}
+LOAD:
+	x = 4;    // x ban đầu
+	y = 2;    // y ban đầu  
+	turn = 0; // Lượt chơi
+	this->init();
+	load(temp_save);
+	goto LAYOUT;
+PLAY_AGAIN:
+	x = 4;    // x ban đầu
+	y = 2;    // y ban đầu  
+	turn = 0; // Lượt chơi
+	this->init();
+	temp_save.re_new();
+	goto LAYOUT;
 
 }
 
 void board::playWithComputer()
 {
 	char BoardGame[12][11];
-	board temp;
+	board temp,temp_save;
 
 	// tao mang 2 chieu board game rong
 	FindTheWay::EmptyBoard(BoardGame);
@@ -745,6 +759,7 @@ void board::playWithComputer()
 	x = 4;    // x ban đầu
 	y = 2;    // y ban đầu  
 	turn = 0; // Lượt chơi
+
 PLAY:
 	this->init();
 	if (turn != 0)
@@ -833,11 +848,11 @@ LAYOUT:
 				}
 				if (key == KEY_SAVE)
 				{
-					temp = save();
+					temp_save = save();
 				}
 				if (key == 108)
 				{
-					goto PLAY;
+					goto LOAD;
 				}
 			}
 		}
@@ -936,7 +951,7 @@ LAYOUT:
 				{
 					if (choose == 0)
 					{
-						goto PLAY;
+						goto PLAY_AGAIN;
 					}
 					if (choose == 1)
 					{
@@ -1013,10 +1028,24 @@ LAYOUT:
 					}
 				}
 				if (c == KEY_ESC)
-					break;
+					exit(0);
 			}
 		}
 	}
+LOAD:
+	x = 4;    // x ban đầu
+	y = 2;    // y ban đầu  
+	turn = 0; // Lượt chơi
+	this->init();
+	load(temp_save);
+	goto LAYOUT;
+PLAY_AGAIN:
+	x = 4;    // x ban đầu
+	y = 2;    // y ban đầu  
+	turn = 0; // Lượt chơi
+	temp_save.re_new();
+	this->init();
+	goto LAYOUT;
 }
 
 void board::drawBoard()
@@ -1257,5 +1286,14 @@ board board::save()
 	}
 	return temp;
 }
-
+void board::re_new()
+{
+	turn = 0;
+	x = 4; y = 2;
+	pr_x = -1;
+	pr_y = -1;
+	pr_x_ai = -1;
+	pr_y_ai = -1;
+	BlankMatrix();
+}
 

@@ -74,6 +74,6 @@ public:
 	void pause();
 	board &load(const board &temp);
 	board save();
-
+	void re_new();
 };
 #endif
