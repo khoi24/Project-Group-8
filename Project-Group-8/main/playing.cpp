@@ -621,6 +621,10 @@ LAYOUT:
 							choose++;
 					}
 				}
+				if (c == KEY_ESC)
+				{
+					exit(0);
+				}
 			}
 
 			//appearCursor();
@@ -725,7 +729,7 @@ LAYOUT:
 					}
 				}
 				if (c == KEY_ESC)
-					break;
+					exit(0);
 
 			}
 		}
@@ -838,7 +842,7 @@ LAYOUT:
 
 				if (key == KEY_ESC)
 				{
-					break;
+					return;
 				}
 				if (key == 112)
 				{
@@ -920,6 +924,10 @@ LAYOUT:
 						if (choose == 0)
 							choose++;
 					}
+				}
+				if (c == KEY_ESC)
+				{
+					exit(0);
 				}
 			}
 
