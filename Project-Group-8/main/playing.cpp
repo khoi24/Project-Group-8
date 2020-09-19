@@ -750,7 +750,6 @@ PLAY_AGAIN:
 
 void board::playWithComputer()
 {
-	char BoardGame[12][11];
 	board temp,temp_save;
 
 	// tao mang 2 chieu board game rong
@@ -760,13 +759,12 @@ void board::playWithComputer()
 	y = 2;    // y ban đầu  
 	turn = 0; // Lượt chơi
 
+	temp_save.re_new();
+
 PLAY:
 	this->init();
 	if (turn != 0)
 	{
-		// khoi tao lai mang boardgame
-		FindTheWay::EmptyBoard(BoardGame);
-
 		load(temp);
 	}
 LAYOUT:
@@ -840,6 +838,7 @@ LAYOUT:
 				{
 					break;
 				}
+				// pause
 				if (key == 112)
 				{
 					temp = save();
@@ -877,9 +876,6 @@ LAYOUT:
 		// O thắng
 		if (winO() == true)
 		{
-			// khoi tao lai mang boardgame
-			FindTheWay::EmptyBoard(BoardGame);
-
 			color_succeede();
 
 			system("cls");
@@ -900,7 +896,7 @@ LAYOUT:
 				{
 					if (choose == 0)
 					{
-						goto PLAY;
+						goto PLAY_AGAIN;
 					}
 					if (choose == 1)
 					{
@@ -1043,6 +1039,7 @@ PLAY_AGAIN:
 	x = 4;    // x ban đầu
 	y = 2;    // y ban đầu  
 	turn = 0; // Lượt chơi
+	FindTheWay::EmptyBoard(BoardGame);
 	temp_save.re_new();
 	this->init();
 	goto LAYOUT;
@@ -1155,6 +1152,7 @@ void board::drawBoard()
 	}
 	gotoxy(27, 27, 240); std::cout << " ";
 }
+
 void board::pause()
 {
 NO_CHANGE:
@@ -1221,6 +1219,7 @@ NO_CHANGE:
 		goto NO_CHANGE;
 	}
 }
+
 board &board::load(const board &temp)
 {
 
@@ -1232,6 +1231,15 @@ board &board::load(const board &temp)
 	x = temp.x;
 	_o = temp._o;
 	_x = temp._x;
+
+	// luu lai boardgame
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 11; j++) 
+		{
+			this->BoardGame[i][j] = temp.BoardGame[i][j];
+		}
+	}
+
 	for (int i = 0; i < 100; i++)
 	{
 		for (int j = 0; j < 100; j++)
@@ -1273,6 +1281,14 @@ board board::save()
 	temp.x = x;
 	temp._o = _o;
 	temp._x = _x;
+
+	// luu board game
+	for (int i = 0; i < 12; i++) {
+		for (int j = 0; j < 11; j++) 
+		{
+			temp.BoardGame[i][j] = this->BoardGame[i][j];
+		}
+	}
 	for (int i = 0; i < 100; i++)
 	{
 		for (int j = 0; j < 100; j++)
@@ -1286,8 +1302,10 @@ board board::save()
 	}
 	return temp;
 }
+
 void board::re_new()
 {
+	FindTheWay::EmptyBoard(BoardGame);
 	turn = 0;
 	x = 4; y = 2;
 	pr_x = -1;
@@ -1296,4 +1314,5 @@ void board::re_new()
 	pr_y_ai = -1;
 	BlankMatrix();
 }
+
 

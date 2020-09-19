@@ -40,6 +40,8 @@ private:
 
 	char a[100][100];  // Mảng 2 chiều
 
+	char BoardGame[12][11]; // luu mang de xu li
+
 	int pr_x, pr_y; // vi tri ve x hoac o trc do
 	int pr_x_ai, pr_y_ai;//trong ai day la nuoc di cua nguoi choi
 	bool turn_back = true; //han che so lan quay lai
@@ -75,5 +77,6 @@ public:
 	board &load(const board &temp);
 	board save();
 	void re_new();
+	void SaveDefault(board& tempt);
 };
 #endif
