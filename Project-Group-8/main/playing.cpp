@@ -478,7 +478,6 @@ LAYOUT:
 				{
 
 
-
 					gotoxy(x, y, COLOR_WHITE_BACKGROUND + COLOR_RED);
 					this->drawOX();
 				}
@@ -726,6 +725,7 @@ LAYOUT:
 				}
 				if (c == KEY_ESC)
 					break;
+
 			}
 		}
 
