@@ -23,6 +23,7 @@
   - >[Link google.doc](https://docs.google.com/document/d/1Dv4jf-1zNE63lMhnlviP9ZeBYAlDsH6lZRxp07doHq8/edit?fbclid=IwAR0glHYi-u_c1VaKnzQIOoaJH15uCi-y5E7Ek1Rb50yuRUYQwlD7kFvw2pI)
   
   - >[Link trello](https://trello.com/b/5yeUio30/ch%C3%A0o-m%E1%BB%ABng-%C4%91%E1%BA%BFn-v%E1%BB%9Bi-trello)
- 
+  
+  - >[Link drive](https://drive.google.com/drive/folders/13zgWGjmXFL4JV7hE7B6t6gAPzLpTy--1?usp=sharing)
  
 
