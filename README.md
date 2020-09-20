@@ -25,5 +25,5 @@
   - >[Link trello](https://trello.com/b/5yeUio30/ch%C3%A0o-m%E1%BB%ABng-%C4%91%E1%BA%BFn-v%E1%BB%9Bi-trello)
   
   - >[Link drive](https://drive.google.com/drive/folders/13zgWGjmXFL4JV7hE7B6t6gAPzLpTy--1?usp=sharing)
- 
+  - >[Link Youtube](https://www.youtube.com/watch?v=CeeQbxQkCDM&ab_channel=kh%C3%B4inguy%E1%BB%85n%C4%91%C4%83ng&fbclid=IwAR0EYtDRNVWXBsSOImMaoBquf_gOfFuM9fOIdVd7xxRIK0IoeKeRuaulwb4)
 
